@@ -1,0 +1,30 @@
+﻿@model SHOP_BanHang.Models.HomeModel
+@{
+    ViewBag.Title = "All_Item";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="padding-bottom-sm">
+
+    <header style="text-align: center" class="section-heading heading-line">
+        <h4 class="title-section text-uppercase">All Items</h4>
+    </header>
+
+    <div class="row row-sm">
+        <!-- Lấy tất cả các sản phẩm của Product ( dùng ToList() ) -->
+        @foreach (var item in Model.ListProduct.ToList())
+        {
+            <div class="col-xl-2 col-lg-3 col-md-4 col-6">
+                <div href="#" class="card card-sm card-product-grid">
+                    <a href="#" class="img-wrap"> <img src="@item.Images"> </a>
+                    <figcaption class="info-wrap title">
+                        <a href="#" class="title">@item.Name</a>
+                        <div class="price mt-1">@item.Price VNĐ</div> <!-- price-wrap.// -->
+                    </figcaption>
+                </div>
+            </div>
+        }
+        <!-- col.// -->
+    </div> <!-- row.// -->
+</section>
+

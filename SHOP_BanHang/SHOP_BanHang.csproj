@@ -1,0 +1,963 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3DB84948-CF32-4D4E-A414-141BB54455FE}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SHOP_BanHang</RootNamespace>
+    <AssemblyName>SHOP_BanHang</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44333</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <WebGreaseLibPath>packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.5.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\src\images\layout\avataradmin.jpg" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Areas\Admin\Views\Shared\Layout_Admin.cshtml" />
+    <None Include="Scripts\jquery-1.8.0.intellisense.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery-1.8.0.js" />
+    <Content Include="Scripts\jquery-1.8.0.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-2.0.0.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\script.js" />
+    <Content Include="Areas\Admin\src\fonts\dropways\dropways.css" />
+    <Content Include="Areas\Admin\src\fonts\dropways\dropways.svg" />
+    <Content Include="Areas\Admin\src\fonts\font-awesome\css\font-awesome.css" />
+    <Content Include="Areas\Admin\src\fonts\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Areas\Admin\src\fonts\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Areas\Admin\src\fonts\foundation-icons\foundation-icons.css" />
+    <Content Include="Areas\Admin\src\fonts\foundation-icons\foundation-icons.svg" />
+    <Content Include="Areas\Admin\src\fonts\ionicons-master\css\ionicons.css" />
+    <Content Include="Areas\Admin\src\fonts\ionicons-master\css\ionicons.min.css" />
+    <Content Include="Areas\Admin\src\fonts\ionicons-master\fonts\ionicons.svg" />
+    <Content Include="Areas\Admin\src\fonts\themify-icons\fonts\themify.svg" />
+    <Content Include="Areas\Admin\src\fonts\themify-icons\themify-icons.css" />
+    <Content Include="Areas\Admin\src\images\apple-touch-icon.png" />
+    <Content Include="Areas\Admin\src\images\banner-img.png" />
+    <Content Include="Areas\Admin\src\images\briefcase.svg" />
+    <Content Include="Areas\Admin\src\images\cancel.svg" />
+    <Content Include="Areas\Admin\src\images\caution-sign.png" />
+    <Content Include="Areas\Admin\src\images\chat-img1.jpg" />
+    <Content Include="Areas\Admin\src\images\chat-img2.jpg" />
+    <Content Include="Areas\Admin\src\images\check-mark-green.png" />
+    <Content Include="Areas\Admin\src\images\check-mark.png" />
+    <Content Include="Areas\Admin\src\images\chrome.png" />
+    <Content Include="Areas\Admin\src\images\coming-soon.png" />
+    <Content Include="Areas\Admin\src\images\cross.png" />
+    <Content Include="Areas\Admin\src\images\demo.svg" />
+    <Content Include="Areas\Admin\src\images\deskapp-logo-white.svg" />
+    <Content Include="Areas\Admin\src\images\deskapp-logo.svg" />
+    <Content Include="Areas\Admin\src\images\edge.png" />
+    <Content Include="Areas\Admin\src\images\favicon-16x16.png" />
+    <Content Include="Areas\Admin\src\images\favicon-32x32.png" />
+    <Content Include="Areas\Admin\src\images\firefox.png" />
+    <Content Include="Areas\Admin\src\images\forgot-password.png" />
+    <Content Include="Areas\Admin\src\images\github.svg" />
+    <Content Include="Areas\Admin\src\images\icon-Cash.png" />
+    <Content Include="Areas\Admin\src\images\icon-debit.png" />
+    <Content Include="Areas\Admin\src\images\icon-online-wallet.png" />
+    <Content Include="Areas\Admin\src\images\img.jpg" />
+    <Content Include="Areas\Admin\src\images\img1.jpg" />
+    <Content Include="Areas\Admin\src\images\img2.jpg" />
+    <Content Include="Areas\Admin\src\images\img3.jpg" />
+    <Content Include="Areas\Admin\src\images\img4.jpg" />
+    <Content Include="Areas\Admin\src\images\img5.jpg" />
+    <Content Include="Areas\Admin\src\images\internet-explorer.png" />
+    <Content Include="Areas\Admin\src\images\layout\header-dark.png" />
+    <Content Include="Areas\Admin\src\images\layout\header-white.png" />
+    <Content Include="Areas\Admin\src\images\layout\sidebar-dark.png" />
+    <Content Include="Areas\Admin\src\images\layout\sidebar-white.png" />
+    <Content Include="Areas\Admin\src\images\login-page-img.png" />
+    <Content Include="Areas\Admin\src\images\logo-icon.png" />
+    <Content Include="Areas\Admin\src\images\menu-icon.svg" />
+    <Content Include="Areas\Admin\src\images\modal-img1.jpg" />
+    <Content Include="Areas\Admin\src\images\modal-img2.jpg" />
+    <Content Include="Areas\Admin\src\images\modal-img3.jpg" />
+    <Content Include="Areas\Admin\src\images\new-loader.gif" />
+    <Content Include="Areas\Admin\src\images\opera.png" />
+    <Content Include="Areas\Admin\src\images\page-icon.svg" />
+    <Content Include="Areas\Admin\src\images\person.svg" />
+    <Content Include="Areas\Admin\src\images\photo1.jpg" />
+    <Content Include="Areas\Admin\src\images\photo2.jpg" />
+    <Content Include="Areas\Admin\src\images\photo3.jpg" />
+    <Content Include="Areas\Admin\src\images\photo4.jpg" />
+    <Content Include="Areas\Admin\src\images\photo5.jpg" />
+    <Content Include="Areas\Admin\src\images\photo6.jpg" />
+    <Content Include="Areas\Admin\src\images\photo7.jpg" />
+    <Content Include="Areas\Admin\src\images\photo8.jpg" />
+    <Content Include="Areas\Admin\src\images\photo9.jpg" />
+    <Content Include="Areas\Admin\src\images\plyr.svg" />
+    <Content Include="Areas\Admin\src\images\product-1.jpg" />
+    <Content Include="Areas\Admin\src\images\product-2.jpg" />
+    <Content Include="Areas\Admin\src\images\product-3.jpg" />
+    <Content Include="Areas\Admin\src\images\product-4.jpg" />
+    <Content Include="Areas\Admin\src\images\product-5.jpg" />
+    <Content Include="Areas\Admin\src\images\product-img1.jpg" />
+    <Content Include="Areas\Admin\src\images\product-img2.jpg" />
+    <Content Include="Areas\Admin\src\images\product-img3.jpg" />
+    <Content Include="Areas\Admin\src\images\product-img4.jpg" />
+    <Content Include="Areas\Admin\src\images\profile-photo.jpg" />
+    <Content Include="Areas\Admin\src\images\register-page-img.png" />
+    <Content Include="Areas\Admin\src\images\safari.png" />
+    <Content Include="Areas\Admin\src\images\success.png" />
+    <Content Include="Areas\Admin\src\images\tick.svg" />
+    <Content Include="Areas\Admin\src\images\upload-file-img.jpg" />
+    <Content Include="Areas\Admin\src\images\wave.png" />
+    <Content Include="Areas\Admin\src\plugins\air-datepicker\dist\css\datepicker.css" />
+    <Content Include="Areas\Admin\src\plugins\air-datepicker\dist\css\datepicker.min.css" />
+    <Content Include="Areas\Admin\src\plugins\air-datepicker\dist\js\datepicker.js" />
+    <Content Include="Areas\Admin\src\plugins\air-datepicker\dist\js\datepicker.min.js" />
+    <Content Include="Areas\Admin\src\plugins\air-datepicker\dist\js\i18n\datepicker.cs.js" />
+    <Content Include="Areas\Admin\src\plugins\air-datepicker\dist\js\i18n\datepicker.da.js" />
+    <Content Include="Areas\Admin\src\plugins\air-datepicker\dist\js\i18n\datepicker.de.js" />
+    <Content Include="Areas\Admin\src\plugins\air-datepicker\dist\js\i18n\datepicker.en.js" />
+    <Content Include="Areas\Admin\src\plugins\air-datepicker\dist\js\i18n\datepicker.es.js" />
+    <Content Include="Areas\Admin\src\plugins\air-datepicker\dist\js\i18n\datepicker.fi.js" />
+    <Content Include="Areas\Admin\src\plugins\air-datepicker\dist\js\i18n\datepicker.fr.js" />
+    <Content Include="Areas\Admin\src\plugins\air-datepicker\dist\js\i18n\datepicker.hu.js" />
+    <Content Include="Areas\Admin\src\plugins\air-datepicker\dist\js\i18n\datepicker.nl.js" />
+    <Content Include="Areas\Admin\src\plugins\air-datepicker\dist\js\i18n\datepicker.pl.js" />
+    <Content Include="Areas\Admin\src\plugins\air-datepicker\dist\js\i18n\datepicker.pt-BR.js" />
+    <Content Include="Areas\Admin\src\plugins\air-datepicker\dist\js\i18n\datepicker.pt.js" />
+    <Content Include="Areas\Admin\src\plugins\air-datepicker\dist\js\i18n\datepicker.ro.js" />
+    <Content Include="Areas\Admin\src\plugins\air-datepicker\dist\js\i18n\datepicker.sk.js" />
+    <Content Include="Areas\Admin\src\plugins\air-datepicker\dist\js\i18n\datepicker.zh.js" />
+    <Content Include="Areas\Admin\src\plugins\apexcharts\apexcharts.css" />
+    <Content Include="Areas\Admin\src\plugins\apexcharts\apexcharts.min.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\bootstrap-select.css" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\bootstrap-select.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\bootstrap-select.min.css" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\bootstrap-select.min.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\css\bootstrap-select.css" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\css\bootstrap-select.min.css" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\bootstrap-select.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\bootstrap-select.min.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-am_ET.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-am_ET.min.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-ar_AR.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-ar_AR.min.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-bg_BG.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-bg_BG.min.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-cs_CZ.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-cs_CZ.min.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-da_DK.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-da_DK.min.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-de_DE.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-de_DE.min.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-en_US.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-en_US.min.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-es_CL.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-es_CL.min.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-es_ES.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-es_ES.min.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-et_EE.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-et_EE.min.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-eu.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-eu.min.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-fa_IR.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-fa_IR.min.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-fi_FI.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-fi_FI.min.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-fr_FR.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-fr_FR.min.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-hr_HR.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-hr_HR.min.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-hu_HU.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-hu_HU.min.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-id_ID.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-id_ID.min.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-it_IT.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-it_IT.min.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-ja_JP.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-ja_JP.min.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-kh_KM.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-kh_KM.min.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-ko_KR.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-ko_KR.min.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-lt_LT.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-lt_LT.min.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-lv_LV.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-lv_LV.min.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-nb_NO.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-nb_NO.min.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-nl_NL.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-nl_NL.min.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-pl_PL.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-pl_PL.min.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-pt_BR.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-pt_BR.min.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-pt_PT.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-pt_PT.min.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-ro_RO.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-ro_RO.min.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-ru_RU.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-ru_RU.min.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-sk_SK.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-sk_SK.min.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-sl_SI.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-sl_SI.min.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-sv_SE.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-sv_SE.min.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-tr_TR.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-tr_TR.min.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-ua_UA.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-ua_UA.min.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-vi_VN.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-vi_VN.min.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-zh_CN.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-zh_CN.min.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-zh_TW.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-zh_TW.min.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\js\bootstrap-select.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\js\i18n\defaults-ar_AR.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\js\i18n\defaults-bg_BG.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\js\i18n\defaults-cro_CRO.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\js\i18n\defaults-cs_CZ.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\js\i18n\defaults-da_DK.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\js\i18n\defaults-de_DE.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\js\i18n\defaults-en_US.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\js\i18n\defaults-es_CL.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\js\i18n\defaults-es_ES.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\js\i18n\defaults-et_EE.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\js\i18n\defaults-eu.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\js\i18n\defaults-fa_IR.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\js\i18n\defaults-fi_FI.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\js\i18n\defaults-fr_FR.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\js\i18n\defaults-hu_HU.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\js\i18n\defaults-id_ID.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\js\i18n\defaults-it_IT.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\js\i18n\defaults-ja_JP.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\js\i18n\defaults-kh_KM.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\js\i18n\defaults-ko_KR.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\js\i18n\defaults-lt_LT.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\js\i18n\defaults-nb_NO.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\js\i18n\defaults-nl_NL.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\js\i18n\defaults-pl_PL.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\js\i18n\defaults-pt_BR.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\js\i18n\defaults-pt_PT.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\js\i18n\defaults-ro_RO.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\js\i18n\defaults-ru_RU.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\js\i18n\defaults-sk_SK.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\js\i18n\defaults-sl_SI.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\js\i18n\defaults-sv_SE.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\js\i18n\defaults-tr_TR.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\js\i18n\defaults-ua_UA.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\js\i18n\defaults-vi_VN.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\js\i18n\defaults-zh_CN.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\js\i18n\defaults-zh_TW.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\test.html" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-tagsinput\bootstrap-tagsinput.css" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-tagsinput\bootstrap-tagsinput.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-touchspin\jquery.bootstrap-touchspin.css" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-touchspin\jquery.bootstrap-touchspin.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-wysihtml5-master\bootstrap-wysihtml5.css" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-wysihtml5-master\bootstrap-wysihtml5.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap\bootstrap.css" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap\bootstrap.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap\bootstrap.min.css" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap\bootstrap.min.js" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap\popper.min.js" />
+    <Content Include="Areas\Admin\src\plugins\cropperjs\dist\cropper-init.js" />
+    <Content Include="Areas\Admin\src\plugins\cropperjs\dist\cropper.common.js" />
+    <Content Include="Areas\Admin\src\plugins\cropperjs\dist\cropper.css" />
+    <Content Include="Areas\Admin\src\plugins\cropperjs\dist\cropper.esm.js" />
+    <Content Include="Areas\Admin\src\plugins\cropperjs\dist\cropper.js" />
+    <Content Include="Areas\Admin\src\plugins\cropperjs\dist\cropper.min.css" />
+    <Content Include="Areas\Admin\src\plugins\cropperjs\dist\cropper.min.js" />
+    <Content Include="Areas\Admin\src\plugins\datatables\css\dataTables.bootstrap4.min.css" />
+    <Content Include="Areas\Admin\src\plugins\datatables\css\jquery.dataTables.min.css" />
+    <Content Include="Areas\Admin\src\plugins\datatables\css\responsive.bootstrap4.min.css" />
+    <Content Include="Areas\Admin\src\plugins\datatables\css\responsive.dataTables.min.css" />
+    <Content Include="Areas\Admin\src\plugins\datatables\images\sort_asc.png" />
+    <Content Include="Areas\Admin\src\plugins\datatables\images\sort_asc_disabled.png" />
+    <Content Include="Areas\Admin\src\plugins\datatables\images\sort_both.png" />
+    <Content Include="Areas\Admin\src\plugins\datatables\images\sort_desc.png" />
+    <Content Include="Areas\Admin\src\plugins\datatables\images\sort_desc_disabled.png" />
+    <Content Include="Areas\Admin\src\plugins\datatables\js\buttons.bootstrap4.min.js" />
+    <Content Include="Areas\Admin\src\plugins\datatables\js\buttons.flash.min.js" />
+    <Content Include="Areas\Admin\src\plugins\datatables\js\buttons.html5.min.js" />
+    <Content Include="Areas\Admin\src\plugins\datatables\js\buttons.print.min.js" />
+    <Content Include="Areas\Admin\src\plugins\datatables\js\dataTables.bootstrap4.min.js" />
+    <Content Include="Areas\Admin\src\plugins\datatables\js\dataTables.buttons.min.js" />
+    <Content Include="Areas\Admin\src\plugins\datatables\js\dataTables.responsive.min.js" />
+    <Content Include="Areas\Admin\src\plugins\datatables\js\jquery.dataTables.min.js" />
+    <Content Include="Areas\Admin\src\plugins\datatables\js\jszip.min.js" />
+    <Content Include="Areas\Admin\src\plugins\datatables\js\pdfmake.min.js" />
+    <Content Include="Areas\Admin\src\plugins\datatables\js\responsive.bootstrap4.min.js" />
+    <Content Include="Areas\Admin\src\plugins\datatables\js\vfs_fonts.js" />
+    <Content Include="Areas\Admin\src\plugins\dropzone\src\dropzone.css" />
+    <Content Include="Areas\Admin\src\plugins\dropzone\src\dropzone.js" />
+    <Content Include="Areas\Admin\src\plugins\fancybox\dist\jquery.fancybox.css" />
+    <Content Include="Areas\Admin\src\plugins\fancybox\dist\jquery.fancybox.js" />
+    <Content Include="Areas\Admin\src\plugins\fancybox\dist\jquery.fancybox.min.css" />
+    <Content Include="Areas\Admin\src\plugins\fancybox\dist\jquery.fancybox.min.js" />
+    <Content Include="Areas\Admin\src\plugins\fullcalendar\fullcalendar.css" />
+    <Content Include="Areas\Admin\src\plugins\fullcalendar\fullcalendar.min.js" />
+    <Content Include="Areas\Admin\src\plugins\highcharts-6.0.7\code\highcharts-3d.js" />
+    <Content Include="Areas\Admin\src\plugins\highcharts-6.0.7\code\highcharts-3d.src.js" />
+    <Content Include="Areas\Admin\src\plugins\highcharts-6.0.7\code\highcharts-more.js" />
+    <Content Include="Areas\Admin\src\plugins\highcharts-6.0.7\code\highcharts-more.src.js" />
+    <Content Include="Areas\Admin\src\plugins\highcharts-6.0.7\code\highcharts.js" />
+    <Content Include="Areas\Admin\src\plugins\highcharts-6.0.7\code\highcharts.src.js" />
+    <Content Include="Areas\Admin\src\plugins\highlight.js\src\highlight.js" />
+    <Content Include="Areas\Admin\src\plugins\highlight.js\src\highlight.pack.js" />
+    <Content Include="Areas\Admin\src\plugins\highlight.js\src\styles\solarized-dark.css" />
+    <Content Include="Areas\Admin\src\plugins\ion-rangeslider\css\ion.rangeSlider.css" />
+    <Content Include="Areas\Admin\src\plugins\ion-rangeslider\js\ion.rangeSlider.min.js" />
+    <Content Include="Areas\Admin\src\plugins\jquery-asColorPicker\dist\css\asColorPicker.css" />
+    <Content Include="Areas\Admin\src\plugins\jquery-asColorPicker\dist\images\alpha.png" />
+    <Content Include="Areas\Admin\src\plugins\jquery-asColorPicker\dist\images\hue.png" />
+    <Content Include="Areas\Admin\src\plugins\jquery-asColorPicker\dist\images\saturation.png" />
+    <Content Include="Areas\Admin\src\plugins\jquery-asColorPicker\dist\images\transparent.png" />
+    <Content Include="Areas\Admin\src\plugins\jquery-asColorPicker\jquery-asColorPicker.js" />
+    <Content Include="Areas\Admin\src\plugins\jquery-asColor\dist\jquery-asColor.js" />
+    <Content Include="Areas\Admin\src\plugins\jquery-asGradient\dist\jquery-asGradient.js" />
+    <Content Include="Areas\Admin\src\plugins\jQuery-Knob-master\jquery.knob.min.js" />
+    <Content Include="Areas\Admin\src\plugins\jquery-steps\jquery.steps.css" />
+    <Content Include="Areas\Admin\src\plugins\jquery-steps\jquery.steps.js" />
+    <Content Include="Areas\Admin\src\plugins\jvectormap\jquery-jvectormap-2.0.3.css" />
+    <Content Include="Areas\Admin\src\plugins\jvectormap\jquery-jvectormap-2.0.3.min.js" />
+    <Content Include="Areas\Admin\src\plugins\jvectormap\jquery-jvectormap-world-mill-en.js" />
+    <Content Include="Areas\Admin\src\plugins\jvectormap\jquery-jvectormap.css" />
+    <Content Include="Areas\Admin\src\plugins\jvectormap\jquery-jvectormap.js" />
+    <Content Include="Areas\Admin\src\plugins\malihu-custom-scrollbar-plugin-master\jquery.mCustomScrollbar.concat.min.js" />
+    <Content Include="Areas\Admin\src\plugins\malihu-custom-scrollbar-plugin-master\jquery.mCustomScrollbar.css" />
+    <Content Include="Areas\Admin\src\plugins\malihu-custom-scrollbar-plugin-master\jquery.mCustomScrollbar.js" />
+    <Content Include="Areas\Admin\src\plugins\malihu-custom-scrollbar-plugin-master\jquery.mCustomScrollbar.min.css" />
+    <Content Include="Areas\Admin\src\plugins\malihu-custom-scrollbar-plugin-master\jquery.mousewheel.min.js" />
+    <Content Include="Areas\Admin\src\plugins\plyr\dist\plyr.css" />
+    <Content Include="Areas\Admin\src\plugins\plyr\dist\plyr.js" />
+    <Content Include="Areas\Admin\src\plugins\plyr\dist\plyr.svg" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\css\select2.css" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\css\select2.min.css" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\i18n\af.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\i18n\ar.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\i18n\az.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\i18n\bg.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\i18n\bs.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\i18n\ca.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\i18n\cs.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\i18n\da.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\i18n\de.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\i18n\dsb.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\i18n\el.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\i18n\en.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\i18n\es.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\i18n\et.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\i18n\eu.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\i18n\fa.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\i18n\fi.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\i18n\fr.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\i18n\gl.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\i18n\he.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\i18n\hi.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\i18n\hr.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\i18n\hsb.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\i18n\hu.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\i18n\hy.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\i18n\id.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\i18n\is.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\i18n\it.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\i18n\ja.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\i18n\km.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\i18n\ko.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\i18n\lt.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\i18n\lv.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\i18n\mk.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\i18n\ms.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\i18n\nb.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\i18n\nl.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\i18n\pl.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\i18n\ps.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\i18n\pt-BR.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\i18n\pt.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\i18n\ro.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\i18n\ru.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\i18n\sk.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\i18n\sl.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\i18n\sr-Cyrl.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\i18n\sr.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\i18n\sv.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\i18n\th.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\i18n\tk.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\i18n\tr.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\i18n\uk.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\i18n\vi.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\i18n\zh-CN.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\i18n\zh-TW.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\select2.full.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\select2.full.min.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\select2.js" />
+    <Content Include="Areas\Admin\src\plugins\select2\dist\js\select2.min.js" />
+    <Content Include="Areas\Admin\src\plugins\slick\slick.css" />
+    <Content Include="Areas\Admin\src\plugins\slick\slick.min.js" />
+    <Content Include="Areas\Admin\src\plugins\sweetalert2\sweet-alert.init.js" />
+    <Content Include="Areas\Admin\src\plugins\sweetalert2\sweetalert2.all.js" />
+    <Content Include="Areas\Admin\src\plugins\sweetalert2\sweetalert2.css" />
+    <Content Include="Areas\Admin\src\plugins\switchery\switchery.min.css" />
+    <Content Include="Areas\Admin\src\plugins\switchery\switchery.min.js" />
+    <Content Include="Areas\Admin\src\plugins\timedropper\timedropper.css" />
+    <Content Include="Areas\Admin\src\plugins\timedropper\timedropper.js" />
+    <Content Include="Areas\Admin\src\plugins\timedropper\timedropper.min.css" />
+    <Content Include="Areas\Admin\src\plugins\timedropper\timedropper.min.js" />
+    <Content Include="Areas\Admin\src\plugins\wysihtml5-master\dist\wysihtml5-0.3.0.js" />
+    <Content Include="Areas\Admin\src\scripts\clipboard.min.js" />
+    <Content Include="Areas\Admin\src\scripts\jquery.min.js" />
+    <Content Include="Areas\Admin\src\scripts\moment.js" />
+    <Content Include="Areas\Admin\src\scripts\setting.js" />
+    <Content Include="Areas\Admin\src\styles\media.css" />
+    <Content Include="Areas\Admin\src\styles\style.css" />
+    <Content Include="Areas\Admin\src\styles\theme.css" />
+    <Content Include="Theme\css\admin_CRUD.css" />
+    <Content Include="Theme\css\bootstrap-theme.css" />
+    <Content Include="Theme\css\bootstrap-theme.min.css" />
+    <Content Include="Theme\css\bootstrap.css" />
+    <Content Include="Theme\css\bootstrap.min.css" />
+    <Content Include="Theme\css\responsive.css" />
+    <Content Include="Theme\css\Site.css" />
+    <Content Include="Theme\css\ui.css" />
+    <Content Include="Theme\fonts\fontawesome\css\all.css" />
+    <Content Include="Theme\fonts\fontawesome\css\all.min.css" />
+    <Content Include="Theme\fonts\fontawesome\css\brands.css" />
+    <Content Include="Theme\fonts\fontawesome\css\brands.min.css" />
+    <Content Include="Theme\fonts\fontawesome\css\fontawesome.css" />
+    <Content Include="Theme\fonts\fontawesome\css\fontawesome.min.css" />
+    <Content Include="Theme\fonts\fontawesome\css\regular.css" />
+    <Content Include="Theme\fonts\fontawesome\css\regular.min.css" />
+    <Content Include="Theme\fonts\fontawesome\css\solid.css" />
+    <Content Include="Theme\fonts\fontawesome\css\solid.min.css" />
+    <Content Include="Theme\fonts\fontawesome\css\svg-with-js.css" />
+    <Content Include="Theme\fonts\fontawesome\css\svg-with-js.min.css" />
+    <Content Include="Theme\fonts\fontawesome\css\v4-shims.css" />
+    <Content Include="Theme\fonts\fontawesome\css\v4-shims.min.css" />
+    <Content Include="Theme\fonts\fontawesome\webfonts\fa-brands-400.svg" />
+    <Content Include="Theme\fonts\fontawesome\webfonts\fa-regular-400.svg" />
+    <Content Include="Theme\fonts\fontawesome\webfonts\fa-solid-900.svg" />
+    <Content Include="Theme\fonts\roboto\font.css" />
+    <Content Include="Theme\images\avatars\avatar1.jpg" />
+    <Content Include="Theme\images\avatars\avatar2.jpg" />
+    <Content Include="Theme\images\avatars\avatar3.jpg" />
+    <Content Include="Theme\images\banners\ad-sm.png" />
+    <Content Include="Theme\images\banners\ad.png" />
+    <Content Include="Theme\images\banners\banner-item1.jpg" />
+    <Content Include="Theme\images\banners\banner-item2.jpg" />
+    <Content Include="Theme\images\banners\banner-item3.jpg" />
+    <Content Include="Theme\images\banners\banner1.jpg" />
+    <Content Include="Theme\images\banners\banner2.jpg" />
+    <Content Include="Theme\images\banners\banner3.jpg" />
+    <Content Include="Theme\images\banners\banner4.jpg" />
+    <Content Include="Theme\images\banners\banner5.jpg" />
+    <Content Include="Theme\images\banners\banner6.jpg" />
+    <Content Include="Theme\images\banners\banner7.jpg" />
+    <Content Include="Theme\images\banners\banner8.jpg" />
+    <Content Include="Theme\images\banners\banner9.jpg" />
+    <Content Include="Theme\images\banners\slide1.jpg" />
+    <Content Include="Theme\images\banners\slide2.jpg" />
+    <Content Include="Theme\images\banners\slide3.jpg" />
+    <Content Include="Theme\images\brand\23pg56.jpg" />
+    <Content Include="Theme\images\brand\ap.jpg" />
+    <Content Include="Theme\images\brand\de.jpg" />
+    <Content Include="Theme\images\brand\dellinspiron3501.jpg" />
+    <Content Include="Theme\images\brand\dellinspiron3583.jpg" />
+    <Content Include="Theme\images\brand\dellinspiron3622.jpg" />
+    <Content Include="Theme\images\brand\dellvostro.jpg" />
+    <Content Include="Theme\images\brand\dellvostro2503.jpg" />
+    <Content Include="Theme\images\brand\dellxps9800.jpg" />
+    <Content Include="Theme\images\brand\iphone10.jpg" />
+    <Content Include="Theme\images\brand\iphone11.jpg" />
+    <Content Include="Theme\images\brand\iphone12.jpg" />
+    <Content Include="Theme\images\brand\iphone6.jpg" />
+    <Content Include="Theme\images\brand\iphone7.jpg" />
+    <Content Include="Theme\images\brand\iphone8.jpg" />
+    <Content Include="Theme\images\brand\Lg.jpg" />
+    <Content Include="Theme\images\brand\lg22mk900.jpg" />
+    <Content Include="Theme\images\brand\lg24gl6g.jpg" />
+    <Content Include="Theme\images\brand\lg24km600.jpg" />
+    <Content Include="Theme\images\brand\lg25pl11.jpg" />
+    <Content Include="Theme\images\brand\lg29wk600.jpg" />
+    <Content Include="Theme\images\brand\pin.jpg" />
+    <Content Include="Theme\images\brand\sa.jpg" />
+    <Content Include="Theme\images\brand\samsung10.jpg" />
+    <Content Include="Theme\images\brand\samsung11.jpg" />
+    <Content Include="Theme\images\brand\samsung12.jpg" />
+    <Content Include="Theme\images\brand\samsung7.jpg" />
+    <Content Include="Theme\images\brand\samsung8.jpg" />
+    <Content Include="Theme\images\brand\samsung9.jpg" />
+    <Content Include="Theme\images\brand\xi.jpg" />
+    <Content Include="Theme\images\brand\xiaomi10.jpg" />
+    <Content Include="Theme\images\brand\xiaomi11.jpg" />
+    <Content Include="Theme\images\brand\xiaomi12.jpg" />
+    <Content Include="Theme\images\brand\xiaomi7.jpg" />
+    <Content Include="Theme\images\brand\xiaomi8.jpg" />
+    <Content Include="Theme\images\brand\xiaomi9.jpg" />
+    <Content Include="Theme\images\favicon.ico" />
+    <Content Include="Theme\images\icons\flags\AU%402x.png" />
+    <Content Include="Theme\images\icons\flags\AU.png" />
+    <Content Include="Theme\images\icons\flags\CN%402x.png" />
+    <Content Include="Theme\images\icons\flags\CN.png" />
+    <Content Include="Theme\images\icons\flags\DE%402x.png" />
+    <Content Include="Theme\images\icons\flags\DE.png" />
+    <Content Include="Theme\images\icons\flags\GB%402x.png" />
+    <Content Include="Theme\images\icons\flags\GB.png" />
+    <Content Include="Theme\images\icons\flags\IN%402x.png" />
+    <Content Include="Theme\images\icons\flags\IN.png" />
+    <Content Include="Theme\images\icons\flags\RU%402x.png" />
+    <Content Include="Theme\images\icons\flags\RU.png" />
+    <Content Include="Theme\images\icons\flags\TR%402x.png" />
+    <Content Include="Theme\images\icons\flags\TR.png" />
+    <Content Include="Theme\images\icons\flags\US%402x.png" />
+    <Content Include="Theme\images\icons\flags\US.png" />
+    <Content Include="Theme\images\icons\flags\UZ%402x.png" />
+    <Content Include="Theme\images\icons\flags\UZ.png" />
+    <Content Include="Theme\images\icons\pay-american-ex.png" />
+    <Content Include="Theme\images\icons\pay-bank.png" />
+    <Content Include="Theme\images\icons\pay-mastercard.png" />
+    <Content Include="Theme\images\icons\pay-visa-el.png" />
+    <Content Include="Theme\images\icons\pay-visa.png" />
+    <Content Include="Theme\images\items\1.jpg" />
+    <Content Include="Theme\images\items\10.jpg" />
+    <Content Include="Theme\images\items\11.jpg" />
+    <Content Include="Theme\images\items\12.jpg" />
+    <Content Include="Theme\images\items\13.jpg" />
+    <Content Include="Theme\images\items\14.jpg" />
+    <Content Include="Theme\images\items\15-1.jpg" />
+    <Content Include="Theme\images\items\15-2.jpg" />
+    <Content Include="Theme\images\items\15.jpg" />
+    <Content Include="Theme\images\items\2.jpg" />
+    <Content Include="Theme\images\items\3.jpg" />
+    <Content Include="Theme\images\items\4.jpg" />
+    <Content Include="Theme\images\items\5.jpg" />
+    <Content Include="Theme\images\items\6.jpg" />
+    <Content Include="Theme\images\items\7.jpg" />
+    <Content Include="Theme\images\items\8.jpg" />
+    <Content Include="Theme\images\items\9.jpg" />
+    <Content Include="Theme\images\logo-white.png" />
+    <Content Include="Theme\images\logo.png" />
+    <Content Include="Theme\images\logo.svg" />
+    <Content Include="Theme\images\logo_apple.jpg" />
+    <Content Include="Theme\images\logo_samsung.jpg" />
+    <Content Include="Theme\images\misc\appstore.png" />
+    <Content Include="Theme\images\misc\payments.png" />
+    <Content Include="Theme\images\misc\playmarket.png" />
+    <Content Include="Theme\images\posts\1.jpg" />
+    <Content Include="Theme\images\posts\2.jpg" />
+    <Content Include="Theme\images\posts\3.jpg" />
+    <Content Include="Theme\images\posts\4.jpg" />
+    <Content Include="Areas\Admin\vendors\fonts\dropways.css" />
+    <Content Include="Areas\Admin\vendors\fonts\dropways.svg" />
+    <Content Include="Areas\Admin\vendors\fonts\font-awesome\css\font-awesome.css" />
+    <Content Include="Areas\Admin\vendors\fonts\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Areas\Admin\vendors\fonts\fontawesome-webfont.svg" />
+    <Content Include="Areas\Admin\vendors\fonts\foundation-icons.css" />
+    <Content Include="Areas\Admin\vendors\fonts\foundation-icons.svg" />
+    <Content Include="Areas\Admin\vendors\fonts\ionicons-master\css\ionicons.css" />
+    <Content Include="Areas\Admin\vendors\fonts\ionicons-master\css\ionicons.min.css" />
+    <Content Include="Areas\Admin\vendors\fonts\ionicons.svg" />
+    <Content Include="Areas\Admin\vendors\fonts\themify-icons\themify-icons.css" />
+    <Content Include="Areas\Admin\vendors\fonts\themify.svg" />
+    <Content Include="Areas\Admin\vendors\images\apple-touch-icon.png" />
+    <Content Include="Areas\Admin\vendors\images\banner-img.png" />
+    <Content Include="Areas\Admin\vendors\images\blue-logo.png" />
+    <Content Include="Areas\Admin\vendors\images\briefcase.svg" />
+    <Content Include="Areas\Admin\vendors\images\cancel.svg" />
+    <Content Include="Areas\Admin\vendors\images\caution-sign.png" />
+    <Content Include="Areas\Admin\vendors\images\chat-img1.jpg" />
+    <Content Include="Areas\Admin\vendors\images\chat-img2.jpg" />
+    <Content Include="Areas\Admin\vendors\images\check-mark-green.png" />
+    <Content Include="Areas\Admin\vendors\images\check-mark.png" />
+    <Content Include="Areas\Admin\vendors\images\chrome.png" />
+    <Content Include="Areas\Admin\vendors\images\coming-soon.png" />
+    <Content Include="Areas\Admin\vendors\images\cross.png" />
+    <Content Include="Areas\Admin\vendors\images\demo.svg" />
+    <Content Include="Areas\Admin\vendors\images\deskapp-logo-white.svg" />
+    <Content Include="Areas\Admin\vendors\images\deskapp-logo.svg" />
+    <Content Include="Areas\Admin\vendors\images\edge.png" />
+    <Content Include="Areas\Admin\vendors\images\favicon-16x16.png" />
+    <Content Include="Areas\Admin\vendors\images\favicon-32x32.png" />
+    <Content Include="Areas\Admin\vendors\images\firefox.png" />
+    <Content Include="Areas\Admin\vendors\images\forgot-password.png" />
+    <Content Include="Areas\Admin\vendors\images\github.svg" />
+    <Content Include="Areas\Admin\vendors\images\icon-Cash.png" />
+    <Content Include="Areas\Admin\vendors\images\icon-debit.png" />
+    <Content Include="Areas\Admin\vendors\images\icon-online-wallet.png" />
+    <Content Include="Areas\Admin\vendors\images\img.jpg" />
+    <Content Include="Areas\Admin\vendors\images\img1.jpg" />
+    <Content Include="Areas\Admin\vendors\images\img2.jpg" />
+    <Content Include="Areas\Admin\vendors\images\img3.jpg" />
+    <Content Include="Areas\Admin\vendors\images\img4.jpg" />
+    <Content Include="Areas\Admin\vendors\images\img5.jpg" />
+    <Content Include="Areas\Admin\vendors\images\internet-explorer.png" />
+    <Content Include="Areas\Admin\vendors\images\layout\header-dark.png" />
+    <Content Include="Areas\Admin\vendors\images\layout\header-white.png" />
+    <Content Include="Areas\Admin\vendors\images\layout\sidebar-dark.png" />
+    <Content Include="Areas\Admin\vendors\images\layout\sidebar-white.png" />
+    <Content Include="Areas\Admin\vendors\images\login-img.png" />
+    <Content Include="Areas\Admin\vendors\images\login-page-img.png" />
+    <Content Include="Areas\Admin\vendors\images\logo-icon.png" />
+    <Content Include="Areas\Admin\vendors\images\menu-icon.svg" />
+    <Content Include="Areas\Admin\vendors\images\modal-img1.jpg" />
+    <Content Include="Areas\Admin\vendors\images\modal-img2.jpg" />
+    <Content Include="Areas\Admin\vendors\images\modal-img3.jpg" />
+    <Content Include="Areas\Admin\vendors\images\new-loader.gif" />
+    <Content Include="Areas\Admin\vendors\images\opera.png" />
+    <Content Include="Areas\Admin\vendors\images\page-icon.svg" />
+    <Content Include="Areas\Admin\vendors\images\person.svg" />
+    <Content Include="Areas\Admin\vendors\images\photo1.jpg" />
+    <Content Include="Areas\Admin\vendors\images\photo2.jpg" />
+    <Content Include="Areas\Admin\vendors\images\photo3.jpg" />
+    <Content Include="Areas\Admin\vendors\images\photo4.jpg" />
+    <Content Include="Areas\Admin\vendors\images\photo5.jpg" />
+    <Content Include="Areas\Admin\vendors\images\photo6.jpg" />
+    <Content Include="Areas\Admin\vendors\images\photo7.jpg" />
+    <Content Include="Areas\Admin\vendors\images\photo8.jpg" />
+    <Content Include="Areas\Admin\vendors\images\photo9.jpg" />
+    <Content Include="Areas\Admin\vendors\images\plyr.svg" />
+    <Content Include="Areas\Admin\vendors\images\product-1.jpg" />
+    <Content Include="Areas\Admin\vendors\images\product-2.jpg" />
+    <Content Include="Areas\Admin\vendors\images\product-3.jpg" />
+    <Content Include="Areas\Admin\vendors\images\product-4.jpg" />
+    <Content Include="Areas\Admin\vendors\images\product-5.jpg" />
+    <Content Include="Areas\Admin\vendors\images\product-img1.jpg" />
+    <Content Include="Areas\Admin\vendors\images\product-img2.jpg" />
+    <Content Include="Areas\Admin\vendors\images\product-img3.jpg" />
+    <Content Include="Areas\Admin\vendors\images\product-img4.jpg" />
+    <Content Include="Areas\Admin\vendors\images\profile-photo.jpg" />
+    <Content Include="Areas\Admin\vendors\images\register-page-img.png" />
+    <Content Include="Areas\Admin\vendors\images\safari.png" />
+    <Content Include="Areas\Admin\vendors\images\success.png" />
+    <Content Include="Areas\Admin\vendors\images\tick.svg" />
+    <Content Include="Areas\Admin\vendors\images\upload-file-img.jpg" />
+    <Content Include="Areas\Admin\vendors\images\wave.png" />
+    <Content Include="Areas\Admin\vendors\scripts\advanced-components.js" />
+    <Content Include="Areas\Admin\vendors\scripts\apexcharts-setting.js" />
+    <Content Include="Areas\Admin\vendors\scripts\calendar-setting.js" />
+    <Content Include="Areas\Admin\vendors\scripts\colorpicker.js" />
+    <Content Include="Areas\Admin\vendors\scripts\core.js" />
+    <Content Include="Areas\Admin\vendors\scripts\core.min.js" />
+    <Content Include="Areas\Admin\vendors\scripts\dashboard.js" />
+    <Content Include="Areas\Admin\vendors\scripts\dashboard2.js" />
+    <Content Include="Areas\Admin\vendors\scripts\datatable-setting.js" />
+    <Content Include="Areas\Admin\vendors\scripts\highchart-setting.js" />
+    <Content Include="Areas\Admin\vendors\scripts\jvectormap-setting.js" />
+    <Content Include="Areas\Admin\vendors\scripts\knob-chart-setting.js" />
+    <Content Include="Areas\Admin\vendors\scripts\layout-settings.js" />
+    <Content Include="Areas\Admin\vendors\scripts\process.js" />
+    <Content Include="Areas\Admin\vendors\scripts\range-slider-setting.js" />
+    <Content Include="Areas\Admin\vendors\scripts\script.js" />
+    <Content Include="Areas\Admin\vendors\scripts\script.min.js" />
+    <Content Include="Areas\Admin\vendors\scripts\steps-setting.js" />
+    <Content Include="Areas\Admin\vendors\styles\core.css" />
+    <Content Include="Areas\Admin\vendors\styles\core.min.css" />
+    <Content Include="Areas\Admin\vendors\styles\icon-font.css" />
+    <Content Include="Areas\Admin\vendors\styles\icon-font.min.css" />
+    <Content Include="Areas\Admin\vendors\styles\style.css" />
+    <Content Include="Areas\Admin\vendors\styles\style.min.css" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="ConnectDB\Brand.cs" />
+    <Compile Include="ConnectDB\Category.cs" />
+    <Compile Include="ConnectDB\DatabaseDB.cs" />
+    <Compile Include="ConnectDB\Product.cs" />
+    <Compile Include="ConnectDB\Users.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="HelperCommon.cs" />
+    <Compile Include="Models\HomeModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <None Include="packages.config" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Theme\css\.DS_Store" />
+    <Content Include="Theme\css\bootstrap.css.map" />
+    <Content Include="Theme\css\responsive.css.map" />
+    <Content Include="Theme\css\ui.css.map" />
+    <Content Include="Theme\fonts\fontawesome\.DS_Store" />
+    <Content Include="Theme\fonts\fontawesome\webfonts\fa-brands-400.eot" />
+    <Content Include="Theme\fonts\fontawesome\webfonts\fa-brands-400.ttf" />
+    <Content Include="Theme\fonts\fontawesome\webfonts\fa-brands-400.woff" />
+    <Content Include="Theme\fonts\fontawesome\webfonts\fa-brands-400.woff2" />
+    <Content Include="Theme\fonts\fontawesome\webfonts\fa-regular-400.eot" />
+    <Content Include="Theme\fonts\fontawesome\webfonts\fa-regular-400.ttf" />
+    <Content Include="Theme\fonts\fontawesome\webfonts\fa-regular-400.woff" />
+    <Content Include="Theme\fonts\fontawesome\webfonts\fa-regular-400.woff2" />
+    <Content Include="Theme\fonts\fontawesome\webfonts\fa-solid-900.eot" />
+    <Content Include="Theme\fonts\fontawesome\webfonts\fa-solid-900.ttf" />
+    <Content Include="Theme\fonts\fontawesome\webfonts\fa-solid-900.woff" />
+    <Content Include="Theme\fonts\fontawesome\webfonts\fa-solid-900.woff2" />
+    <Content Include="Theme\fonts\roboto\Roboto-Bold.ttf" />
+    <Content Include="Theme\fonts\roboto\Roboto-Light.ttf" />
+    <Content Include="Theme\fonts\roboto\Roboto-Medium.ttf" />
+    <Content Include="Theme\fonts\roboto\Roboto-Regular.ttf" />
+    <Content Include="Theme\fonts\roboto\Roboto-Thin.ttf" />
+    <Content Include="Theme\images\.DS_Store" />
+    <Content Include="Theme\images\banners\.DS_Store" />
+    <Content Include="Theme\images\icons\.DS_Store" />
+    <Content Include="Theme\images\items\.DS_Store" />
+    <Content Include="Theme\images\posts\.DS_Store" />
+    <Content Include="Views\Product\Details.cshtml" />
+    <Content Include="Views\Category\SmartPhone.cshtml" />
+    <Content Include="Views\Category\Screen.cshtml" />
+    <Content Include="Views\Category\Laptop.cshtml" />
+    <Content Include="Views\Category\All_Item.cshtml" />
+    <Content Include="Areas\Admin\src\fonts\dropways\dropways.eot" />
+    <Content Include="Areas\Admin\src\fonts\dropways\dropways.ttf" />
+    <Content Include="Areas\Admin\src\fonts\dropways\dropways.woff" />
+    <Content Include="Areas\Admin\src\fonts\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Areas\Admin\src\fonts\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Areas\Admin\src\fonts\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Areas\Admin\src\fonts\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Areas\Admin\src\fonts\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="Areas\Admin\src\fonts\foundation-icons\foundation-icons.eot" />
+    <Content Include="Areas\Admin\src\fonts\foundation-icons\foundation-icons.ttf" />
+    <Content Include="Areas\Admin\src\fonts\foundation-icons\foundation-icons.woff" />
+    <Content Include="Areas\Admin\src\fonts\ionicons-master\fonts\ionicons.eot" />
+    <Content Include="Areas\Admin\src\fonts\ionicons-master\fonts\ionicons.ttf" />
+    <Content Include="Areas\Admin\src\fonts\ionicons-master\fonts\ionicons.woff" />
+    <Content Include="Areas\Admin\src\fonts\themify-icons\fonts\themify.eot" />
+    <Content Include="Areas\Admin\src\fonts\themify-icons\fonts\themify.ttf" />
+    <Content Include="Areas\Admin\src\fonts\themify-icons\fonts\themify.woff" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\css\bootstrap-select.css.map" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\bootstrap-select.js.map" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\bootstrap-select.min.js.map" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-am_ET.js.map" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-ar_AR.js.map" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-bg_BG.js.map" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-cs_CZ.js.map" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-da_DK.js.map" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-de_DE.js.map" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-en_US.js.map" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-es_CL.js.map" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-es_ES.js.map" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-et_EE.js.map" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-eu.js.map" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-fa_IR.js.map" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-fi_FI.js.map" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-fr_FR.js.map" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-hr_HR.js.map" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-hu_HU.js.map" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-id_ID.js.map" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-it_IT.js.map" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-ja_JP.js.map" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-kh_KM.js.map" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-ko_KR.js.map" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-lt_LT.js.map" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-lv_LV.js.map" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-nb_NO.js.map" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-nl_NL.js.map" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-pl_PL.js.map" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-pt_BR.js.map" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-pt_PT.js.map" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-ro_RO.js.map" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-ru_RU.js.map" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-sk_SK.js.map" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-sl_SI.js.map" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-sv_SE.js.map" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-tr_TR.js.map" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-ua_UA.js.map" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-vi_VN.js.map" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-zh_CN.js.map" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\dist\js\i18n\defaults-zh_TW.js.map" />
+    <Content Include="Areas\Admin\src\plugins\bootstrap-select\js\.jshintrc" />
+    <Content Include="Areas\Admin\src\plugins\dropzone\src\basic.scss" />
+    <Content Include="Areas\Admin\src\plugins\dropzone\src\dropzone.scss" />
+    <Content Include="Areas\Admin\src\plugins\highcharts-6.0.7\code\highcharts-3d.js.map" />
+    <Content Include="Areas\Admin\src\plugins\highcharts-6.0.7\code\highcharts-more.js.map" />
+    <Content Include="Areas\Admin\src\plugins\highcharts-6.0.7\code\highcharts.js.map" />
+    <Content Include="Areas\Admin\vendors\fonts\dropways.eot" />
+    <Content Include="Areas\Admin\vendors\fonts\dropways.ttf" />
+    <Content Include="Areas\Admin\vendors\fonts\dropways.woff" />
+    <Content Include="Areas\Admin\vendors\fonts\fontawesome-webfont.eot" />
+    <Content Include="Areas\Admin\vendors\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Areas\Admin\vendors\fonts\fontawesome-webfont.woff" />
+    <Content Include="Areas\Admin\vendors\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Areas\Admin\vendors\fonts\FontAwesome.otf" />
+    <Content Include="Areas\Admin\vendors\fonts\foundation-icons.eot" />
+    <Content Include="Areas\Admin\vendors\fonts\foundation-icons.ttf" />
+    <Content Include="Areas\Admin\vendors\fonts\foundation-icons.woff" />
+    <Content Include="Areas\Admin\vendors\fonts\ionicons.eot" />
+    <Content Include="Areas\Admin\vendors\fonts\ionicons.ttf" />
+    <Content Include="Areas\Admin\vendors\fonts\ionicons.woff" />
+    <Content Include="Areas\Admin\vendors\fonts\themify.eot" />
+    <Content Include="Areas\Admin\vendors\fonts\themify.ttf" />
+    <Content Include="Areas\Admin\vendors\fonts\themify.woff" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Data\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>49734</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44333/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

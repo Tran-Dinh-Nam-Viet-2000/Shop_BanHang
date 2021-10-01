@@ -1,0 +1,39 @@
+﻿body {
+}
+/* ================ ADMIN Edit-Details-Delete ================== */
+.css-admin-edit {
+    color: white;
+    background-color: blue;
+    padding: 5px;
+    text-decoration: none
+}
+
+    .css-admin-edit:hover {
+        color: white;
+        text-decoration: none
+    }
+
+.css-admin-details {
+    color: white;
+    background-color: green;
+    padding: 5px;
+    text-decoration: none
+}
+
+    .css-admin-details:hover {
+        color: white;
+        text-decoration: none
+    }
+
+.css-admin-delete {
+    color: white;
+    background-color: red;
+    padding: 5px;
+    text-decoration: none
+}
+
+    .css-admin-delete:hover {
+        color: white;
+        text-decoration: none
+    }
+
