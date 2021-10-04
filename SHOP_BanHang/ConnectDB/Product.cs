@@ -62,7 +62,7 @@
         [StringLength(255)]
         [DisplayName("Nơi sản xuất")]
         //[Required(ErrorMessage = "Vui lòng nhập nơi sản xuất")]
-        public string origin { get; set; }
+        public string Origin { get; set; }
 
         [DisplayName("Ngày tạo")]
         [DataType(DataType.Date)]

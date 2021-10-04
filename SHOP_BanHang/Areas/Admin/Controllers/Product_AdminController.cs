@@ -21,6 +21,7 @@ namespace SHOP_BanHang.Areas.Admin.Controllers
         [HttpGet]
         public JsonResult ListProduct()
         {
+            
             try
             {
                 var listProduct = (from list in objDB.Product.Where(n => n.ID != 1)
@@ -28,23 +29,21 @@ namespace SHOP_BanHang.Areas.Admin.Controllers
                                    {
                                        ID = list.ID,
                                        Name = list.Name,
-                                       Image = list.Images,
+                                       Images = list.Images,
                                        Price = list.Price,
-                                       PriceDiscout = list.PriceDiscout,
                                        TypeId = list.TypeId,
-                                       BrandId =list.BrandId,
+                                       BrandId = list.BrandId,
                                        NameBrand = list.NameBrand,
                                        Description = list.Description,
-                                       Origin = list.origin,
+                                       Origin = list.Origin,
                                        CreateDate = list.CreateDate,
-                                       UpdateDate = list.UpdateDate,
                                    });
-                return Json(new { code = true, listProduct = listProduct, msg = "Lấy danh sách thành công!" }, JsonRequestBehavior.AllowGet);
+                return Json(new { code = 200, listProduct = listProduct, msg = "Lấy danh sách thành công!" }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
             {
 
-                return Json(new { code = false, msg = "Lấy danh sách thành công!" +ex.Message }, JsonRequestBehavior.AllowGet);
+                return Json(new { code = 300, msg = "Lấy danh sách thất bại!" +ex.Message }, JsonRequestBehavior.AllowGet);
 
             }
         }

@@ -17,7 +17,7 @@
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="~/Theme/fontawesome-free-5.15.4-web/fontawesome-free-5.15.4-web/css/all.min.css" rel="stylesheet" />
-    
+
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="~/Areas/Admin/vendors/styles/core.css">
     <link rel="stylesheet" type="text/css" href="~/Areas/Admin/vendors/styles/icon-font.min.css">
@@ -306,9 +306,9 @@
     <div class="mobile-menu-overlay"></div>
 
     <div class="main-container">
-        <div class="pd-ltr-20">
+        <div  style="width: 1600px" class="pd-ltr-20">
             @RenderBody()
-            <div class="footer-wrap pd-20 mb-20 card-box">
+            <div  class="footer-wrap pd-20 mb-20 card-box">
                 Alistyle - Thương hiệu về hàng công nghệ điện tử <a href="~/Home/Index" target="_blank">Alistyle</a>
             </div>
         </div>
@@ -318,19 +318,20 @@
     <script src="~/Areas/Admin/vendors/scripts/script.min.js"></script>
     <script src="~/Areas/Admin/vendors/scripts/process.js"></script>
     <script src="~/Areas/Admin/vendors/scripts/layout-settings.js"></script>
-    <script src="~/Areas/Admin/src/plugins/datatables/js/jquery.dataTables.min.js"></script>
+    @*<script src="~/Areas/Admin/src/plugins/datatables/js/jquery.dataTables.min.js"></script>
     <script src="~/Areas/Admin/src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
     <script src="~/Areas/Admin/src/plugins/datatables/js/dataTables.responsive.min.js"></script>
-    <script src="~/Areas/Admin/src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
+    <script src="~/Areas/Admin/src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>*@
     <!-- buttons for Export datatable -->
-    <script src="~/Areas/Admin/src/plugins/datatables/js/dataTables.buttons.min.js"></script>
+    @*<script src="~/Areas/Admin/src/plugins/datatables/js/dataTables.buttons.min.js"></script>
     <script src="~/Areas/Admin/src/plugins/datatables/js/buttons.bootstrap4.min.js"></script>
     <script src="~/Areas/Admin/src/plugins/datatables/js/buttons.print.min.js"></script>
     <script src="~/Areas/Admin/src/plugins/datatables/js/buttons.html5.min.js"></script>
     <script src="~/Areas/Admin/src/plugins/datatables/js/buttons.flash.min.js"></script>
     <script src="~/Areas/Admin/src/plugins/datatables/js/pdfmake.min.js"></script>
     <script src="~/Areas/Admin/src/plugins/datatables/js/vfs_fonts.js"></script>
-    
+    <script src="vendors/scripts/datatable-setting.js"></script>*@
+
     @RenderSection("scripts", required: false)
 </body>
 </html>
