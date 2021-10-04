@@ -139,8 +139,15 @@
                 success: function (data) {
                     //console.log(data);
                     //dùng vòng lặp để load dữ liệu
-                    if (data.code = 200) { //nếu code = 200 thì show ra
+                    if (data.code = 100) { //nếu code = 200 thì show ra
                         $.each(data.listProduct, function (k, v) { //key và value
+                            var date = new Date(parseInt((v.CreateDate).substr(6)));
+                            if (date.getDate() + 1 < 10) {
+                                var formattedDate = "0" + (date.getDate()) + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+                            }
+                            else {
+                                var formattedDate = (date.getDate()) + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+                            }
                             //Dùng cặp thẻ <tr>
                             let tr = '<tr style = "text-align:center" id = "' + v.ID + '">';
                             //nối chuỗi và dùng cặp thẻ <td>
@@ -153,12 +160,12 @@
                             tr += '<td>' + v.NameBrand + '</td>';
                             tr += '<td>' + v.Description + '</td>';
                             tr += '<td>' + v.Origin + '</td>';
-                            tr += '<td>' + v.CreateDate + '</td>';
+                            tr += '<td>' + formattedDate + '</td>';
                             //3 nút xem,sửa,xóa
                             tr += '<td>';
-                            tr += '<button style = " margin-right: 5px" type="button" name = "details" class=" btn btn-info"><i class="dw dw-eye"></i></button>';
-                            tr += '<button style = " margin-right: 5px" type="button" name = "edit" class="btn btn-warning"><i class="dw dw-edit2"></i></button>';
-                            tr += '<button  type="button" name = "details" class="btn btn-danger"><i class="dw dw-delete-3"></i></button>';
+                            tr +=   '<button style = " margin-right: 5px" type="button" name = "details" class=" btn btn-info"><i class="dw dw-eye"></i></button>';
+                            tr +=   '<button style = " margin-right: 5px" type="button" name = "edit" class="btn btn-warning"><i class="dw dw-edit2"></i></button>';
+                            tr +=   '<button  type="button" name = "details" class="btn btn-danger"><i class="dw dw-delete-3"></i></button>';
                             tr += '</td>';
                             tr += '</tr>';
                             $('#tblList').append(tr);

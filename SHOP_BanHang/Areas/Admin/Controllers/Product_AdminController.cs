@@ -38,7 +38,7 @@ namespace SHOP_BanHang.Areas.Admin.Controllers
                                        Origin = list.Origin,
                                        CreateDate = list.CreateDate,
                                    });
-                return Json(new { code = 200, listProduct = listProduct, msg = "Lấy danh sách thành công!" }, JsonRequestBehavior.AllowGet);
+                return Json(new { code = 100, listProduct = listProduct, msg = "Lấy danh sách thành công!" }, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
             {
