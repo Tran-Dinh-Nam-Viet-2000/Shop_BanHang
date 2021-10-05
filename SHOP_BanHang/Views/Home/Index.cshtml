@@ -17,10 +17,10 @@
                         <h6>Menu</h6>
                         <nav class="nav-home-aside">
                             <ul class="menu-category">
-                            <li><a class="dropdown-item" href="~/Category/SmartPhone">Smart Phone</a></li>
-                            <li><a class="dropdown-item" href="~/Category/Screen">Screen</a> </li>
-                            <li><a class="dropdown-item" href="~/Category/Laptop">Laptop</a></li>
-                            <li> <a class="dropdown-item" href="~/Category/All_Item">All Items</a></li>
+                                <li><a class="dropdown-item" href="~/Category/SmartPhone">Điện thoại</a></li>
+                                <li><a class="dropdown-item" href="~/Category/Screen">Màn hình</a> </li>
+                                <li><a class="dropdown-item" href="~/Category/Laptop">Laptop</a></li>
+                                <li> <a class="dropdown-item" href="~/Category/All_Item">Tất cả sản phẩm</a></li>
                             </ul>
                         </nav>
                     </aside>
@@ -59,7 +59,6 @@
                     <div class="col-md d-none d-lg-block flex-grow-1">
                         <aside class="special-home-right">
                             <h6 class="bg-blue text-center text-white mb-0 p-2">Sản phẩm phổ biến</h6>
-
                             @foreach (var item in Model.ListProduct.Take(3))
                             {
                                 <div class="card-banner border-bottom">
@@ -70,10 +69,6 @@
                                     <img src="@item.Images" height="80" class="img-bg">
                                 </div>
                             }
-
-
-
-
                         </aside>
                     </div> <!-- col.// -->
                 </div> <!-- row.// -->
@@ -83,13 +78,13 @@
 
     </section>
     <!-- ========================= SECTION MAIN END// ========================= -->
-    <!-- =============== SECTION DEAL =============== -->
+    <!-- =============== SECTION GIẢM GIÁ =============== -->
     <section class="padding-bottom">
         <div class="card card-deal">
             <div class="col-heading content-body">
                 <header class="section-heading">
                     <h3 class="section-title">Giảm giá -20%</h3>
-                    
+
                 </header><!-- sect-heading -->
                 <div class="timer">
                     <div> <span class="num">04</span> <small>Ngày</small></div>
@@ -104,17 +99,17 @@
                     <div class="col-md col-6">
                         <figure class="card-product-grid card-sm">
                             <a href="@Url.Action("Details", "Product")" class="img-wrap">
-                                <img src="@item.Images">                                
+                                <img src="@item.Images">
                             </a>
 
-                        <div class="text-wrap p-3">
-                            @*<a href="" class="title">@item.Name</a>*@
-                            @Html.ActionLink(item.Name, "Details", "Product") <br/>
-                            <span class="badge badge-danger"> -20% </span> <br />
+                            <div class="text-wrap p-3">
+                                @*<a href="" class="title">@item.Name</a>*@
+                                @Html.ActionLink(item.Name, "Details", "Product") <br />
+                                <span class="badge badge-danger"> -20% </span> <br />
 
-                            <span style="text-decoration: line-through" class="badge badge-danger"> @item.Price VNĐ </span>
-                            <span class="badge badge-danger"> @item.PriceDiscout VNĐ </span>
-                        </div>
+                                <span style="text-decoration: line-through" class="badge badge-danger"> @item.Price VNĐ </span>
+                                <span class="badge badge-danger"> @item.PriceDiscout VNĐ </span>
+                            </div>
                         </figure>
                     </div><!-- col.// -->
                 }
@@ -125,7 +120,7 @@
 
     </section>
     <!-- =============== SECTION DEAL // END =============== -->
-    <!-- =============== SECTION 1 =============== -->
+    <!-- =============== SECTION 1 (LIST APPLE) =============== -->
     <section class="padding-bottom">
         <header class="section-heading heading-line">
             <h4 class="title-section text-uppercase">Apple</h4>
@@ -136,12 +131,12 @@
                 <div class="col-md-3">
 
                     <div class="home-category-banner bg-light-orange">
-                        <h5 class="title">Apple is the top brand</h5>
+                        <h5 class="title">Apple là thương hiệu hàng đầu</h5>
                         <p>
-                            IPhone often maintains stability in the long run, User interface on iPhone is simple, easy to get used to.
-                            Security on iPhone is always on top, Apple's ecosystem of products.
+                            IPhone thường duy trì sự ổn định trong thời gian dài, Giao diện người dùng trên iPhone rất đơn giản, dễ làm quen.
+                            Bảo mật trên iPhone luôn được đặt lên hàng đầu, là hệ sinh thái các sản phẩm của Apple.
                         </p>
-                        <a href="#" class="btn btn-outline-primary rounded-pill">Source now</a>
+
 
                     </div>
 
@@ -155,17 +150,17 @@
                                     <div class="card-body">
                                         <h6 class="title">@item.Name  </h6>
                                         <img class="img-sm float-right" src="@item.Images">
-                                        <p class="text-muted"><i class="fa fa-map-marker-alt"></i>@item.origin </p>
+                                        <p class="text-muted"><i style="margin-right: 3px" class="fa fa-map-marker-alt"></i>@item.Origin </p>
                                         <span style="padding: 10px" class="badge badge-danger"> @item.Price VNĐ </span>
-                                            <div class="form-row  mt-4">
-                                                <div class="form-group col-md">
-                                                    <a href="#" class="btn  btn-primary">
-                                                        <i class="fas fa-shopping-cart"></i> <span style="font-size: 13px" class="text">Add to cart</span>
-                                                    </a>
-                                                </div> <!-- col.// -->
-                                            </div>
+                                        <div class="form-row  mt-4">
+                                            <div class="form-group col-md">
+                                                <a style="font-size: 12px" href="#" class="btn  btn-primary">
+                                                    <i class="fas fa-shopping-cart"></i> <span class="text">Thêm vào giỏ hàng</span>
+                                                </a>
+                                            </div> <!-- col.// -->
+                                        </div>
                                     </div>
-                                     <!-- row.// -->
+                                    <!-- row.// -->
                                 </a>
                             </li>
                         }
@@ -176,7 +171,7 @@
         </div> <!-- card.// -->
     </section>
     <!-- =============== SECTION 1 END =============== -->
-    <!-- =============== SECTION 2 =============== -->
+    <!-- =============== SECTION 2 (LIST SAMSUNG)=============== -->
     <section class="padding-bottom">
         <header class="section-heading heading-line">
             <h4 class="title-section text-uppercase">Samsung</h4>
@@ -187,14 +182,11 @@
                 <div class="col-md-3">
 
                     <div class="home-category-banner bg-light-orange">
-                        <h5 class="title">Samsung is famous for its slim design</h5>
+                        <h5 class="title">Samsung nổi tiếng với thiết kế</h5>
                         <p>
-                            Create animations from Youtube videos, Personalize the sound on the device, Pay directly on the phone
-                            Move web pages and messages to Reminders
+                            Tạo ảnh động từ video Youtube, Cá nhân hóa âm thanh trên thiết bị, Thanh toán trực tiếp trên điện thoại
+                            Di chuyển các trang web và tin nhắn vào Lời nhắc
                         </p>
-                        <a href="#" class="btn btn-outline-primary rounded-pill">Source now</a> <br />
-
-
                     </div>
 
                 </div> <!-- col.// -->
@@ -207,8 +199,15 @@
                                     <div class="card-body">
                                         <h6 class="title">@item.Name</h6>
                                         <img class="img-sm float-right" src="@item.Images">
-                                        <p class="text-muted"><i class="fa fa-map-marker-alt"></i>@item.origin</p>
+                                        <p class="text-muted"><i style="margin-right: 3px" class="fa fa-map-marker-alt"></i>@item.Origin</p>
                                         <span style="padding: 10px" class="badge badge-danger"> @item.Price VNĐ </span>
+                                        <div class="form-row  mt-4">
+                                            <div class="form-group col-md">
+                                                <a style="font-size: 12px" href="#" class="btn  btn-primary">
+                                                    <i class="fas fa-shopping-cart"></i> <span class="text">Thêm vào giỏ hàng</span>
+                                                </a>
+                                            </div> <!-- col.// -->
+                                        </div>
                                     </div>
                                 </a>
                             </li>
@@ -220,7 +219,7 @@
         </div> <!-- card.// -->
     </section>
     <!-- =============== SECTION 2 END =============== -->
-    <!-- =============== SECTION 3 =============== -->
+    <!-- =============== SECTION 3 (LIST XIAOMI)=============== -->
     <section class="padding-bottom">
         <header class="section-heading heading-line">
             <h4 class="title-section text-uppercase">Xiaomi Redmi</h4>
@@ -229,16 +228,12 @@
         <div class="card card-home-category">
             <div class="row no-gutters">
                 <div class="col-md-3">
-
                     <div class="home-category-banner bg-light-orange">
-                        <h5 class="title">Xiaomi is a popular product in China</h5>
+                        <h5 class="title">Xiaomi là một sản phẩm phổ biến ở Trung Quốc</h5>
                         <p>
-                            Set up two different usage spaces, Scrolling Screenshot.
-                            New Abacus App, Hide or Lock Notes, New Virtual Home Button
+                            Thiết lập hai không gian sử dụng khác nhau, Ảnh chụp màn hình cuộn.
+                            Ứng dụng bàn tính mới, ẩn hoặc khóa ghi chú, nút Home ảo mới
                         </p>
-                        <a href="#" class="btn btn-outline-primary rounded-pill">Source now</a> <br />
-
-
                     </div>
 
                 </div> <!-- col.// -->
@@ -251,20 +246,26 @@
                                     <div class="card-body">
                                         <h6 class="title">@item.Name</h6>
                                         <img class="img-sm float-right" src="@item.Images">
-                                        <p class="text-muted"><i class="fa fa-map-marker-alt"></i>@item.origin</p>
+                                        <p class="text-muted"><i style="margin-right: 3px" class="fa fa-map-marker-alt"></i>@item.Origin</p>
                                         <span style="padding: 10px" class="badge badge-danger"> @item.Price VNĐ </span>
+                                        <div class="form-row  mt-4">
+                                            <div class="form-group col-md">
+                                                <a style="font-size: 12px" href="#" class="btn  btn-primary">
+                                                    <i class="fas fa-shopping-cart"></i> <span class="text">Thêm vào giỏ hàng</span>
+                                                </a>
+                                            </div> <!-- col.// -->
+                                        </div>
                                     </div>
                                 </a>
                             </li>
                         }
-
                     </ul>
                 </div> <!-- col.// -->
             </div> <!-- row.// -->
         </div> <!-- card.// -->
     </section>
     <!-- =============== SECTION 3 END=============== -->
-    <!-- =============== SECTION 4 =============== -->
+    <!-- =============== SECTION 4 (LIST LG)=============== -->
     <section class="padding-bottom">
         <header class="section-heading heading-line">
             <h4 class="title-section text-uppercase">LCD LG</h4>
@@ -273,15 +274,11 @@
         <div class="card card-home-category">
             <div class="row no-gutters">
                 <div class="col-md-3">
-
                     <div class="home-category-banner bg-light-orange">
-                        <h5 class="title">LG is one of the best monitor brands today</h5>
+                        <h5 class="title">LG là một trong những thương hiệu màn hình tốt nhất hiện nay</h5>
                         <p>
-                            LG always brings a good resolution, beautiful display color, neat design suitable for the workplace
+                            LG luôn mang đến độ phân giải tốt, màu sắc hiển thị đẹp, thiết kế gọn gàng phù hợp với môi trường công sở
                         </p>
-                        <a href="#" class="btn btn-outline-primary rounded-pill">Source now</a> <br />
-
-
                     </div>
 
                 </div> <!-- col.// -->
@@ -294,20 +291,26 @@
                                     <div class="card-body">
                                         <h6 class="title">@item.Name</h6>
                                         <img class="img-sm float-right" src="@item.Images">
-                                        <p class="text-muted"><i class="fa fa-map-marker-alt"></i>@item.origin</p>
+                                        <p class="text-muted"><i style="margin-right: 3px" class="fa fa-map-marker-alt"></i>@item.Origin</p>
                                         <span style="padding: 10px" class="badge badge-danger"> @item.Price VNĐ </span>
+                                        <div class="form-row  mt-4">
+                                            <div class="form-group col-md">
+                                                <a style="font-size: 12px" href="#" class="btn  btn-primary">
+                                                    <i class="fas fa-shopping-cart"></i> <span class="text">Thêm vào giỏ hàng</span>
+                                                </a>
+                                            </div> <!-- col.// -->
+                                        </div>
                                     </div>
                                 </a>
                             </li>
                         }
-
                     </ul>
                 </div> <!-- col.// -->
             </div> <!-- row.// -->
         </div> <!-- card.// -->
     </section>
     <!-- =============== SECTION 4 END=============== -->
-    <!-- =============== SECTION 5 =============== -->
+    <!-- =============== SECTION 5 (LIST DELL)=============== -->
     <section class="padding-bottom">
         <header class="section-heading heading-line">
             <h4 class="title-section text-uppercase">Dell</h4>
@@ -316,18 +319,13 @@
         <div class="card card-home-category">
             <div class="row no-gutters">
                 <div class="col-md-3">
-
                     <div class="home-category-banner bg-light-orange">
-                        <h5 class="title">Dell is one of the leading brands in laptops</h5>
+                        <h5 class="title">Dell là một trong những thương hiệu hàng đầu về máy tính xách tay</h5>
                         <p>
-                            Referring to Dell laptops, one cannot ignore the durability of the product. Rated as one of the laptops with high durability.
-                            Moreover, Dell's price is also very attractive, suitable for consumers.
+                            Nhắc đến laptop Dell người ta không thể bỏ qua độ bền của sản phẩm. Được đánh giá là một trong những dòng laptop có độ bền cao.
+                            Hơn nữa, mức giá của Dell cũng rất hấp dẫn, phù hợp với túi tiền của người tiêu dùng.
                         </p>
-                        <a href="#" class="btn btn-outline-primary rounded-pill">Source now</a> <br />
-
-
                     </div>
-
                 </div> <!-- col.// -->
                 <div class="col-md-9">
                     <ul class="row no-gutters bordered-cols">
@@ -338,13 +336,19 @@
                                     <div class="card-body">
                                         <h6 class="title">@item.Name</h6>
                                         <img style="width: 100px" class="img-sm float-right" src="@item.Images">
-                                        <p class="text-muted"><i class="fa fa-map-marker-alt"></i>@item.origin</p>
+                                        <p class="text-muted"><i style="margin-right: 3px" class="fa fa-map-marker-alt"></i>@item.Origin</p>
                                         <span style="padding: 10px" class="badge badge-danger"> @item.Price VNĐ </span>
+                                        <div class="form-row  mt-4">
+                                            <div class="form-group col-md">
+                                                <a style="font-size: 12px" href="#" class="btn  btn-primary">
+                                                    <i class="fas fa-shopping-cart"></i> <span class="text">Thêm vào giỏ hàng</span>
+                                                </a>
+                                            </div> <!-- col.// -->
+                                        </div>
                                     </div>
                                 </a>
                             </li>
                         }
-
                     </ul>
                 </div> <!-- col.// -->
             </div> <!-- row.// -->
@@ -414,7 +418,7 @@
     </section>
 
     <!-- =============== SECTION REQUEST .//END =============== -->
-    <!-- =============== SECTION ITEMS =============== -->
+    <!-- =============== SECTION TẤT CẢ SẢN PHẨM =============== -->
     <section class="padding-bottom-sm">
 
         <header class="section-heading heading-line">
@@ -437,12 +441,12 @@
             <!-- col.// -->
         </div> <!-- row.// -->
     </section>
-    <!-- =============== SECTION ITEMS .//END =============== -->
-    <!-- =============== SECTION SERVICES =============== -->
+    <!-- =============== SECTION TẤT CẢ SẢN PHẨM .//END =============== -->
+    <!-- =============== SECTION THƯƠNG HIỆU =============== -->
     <section class="padding-bottom">
 
         <header class="section-heading heading-line">
-            <h4 class="title-section text-uppercase">Brand</h4>
+            <h4 class="title-section text-uppercase">Thương hiệu</h4>
         </header>
 
         <div class="row">
@@ -451,7 +455,6 @@
                 <div class="col-md-3 col-sm-6">
                     <article class="card card-post">
                         <img src="@item.Images" class="card-img-top">
-
                     </article> <!-- card.// -->
                 </div>
             }
@@ -459,12 +462,12 @@
         </div> <!-- row.// -->
 
     </section>
-    <!-- =============== SECTION SERVICES .//END =============== -->
+    <!-- =============== SECTION THƯƠNG HIỆU .//END =============== -->
     <!-- =============== SECTION REGION =============== -->
     <section class="padding-bottom">
 
         <header class="section-heading heading-line">
-            <h4 class="title-section text-uppercase">Choose region</h4>
+            <h4 class="title-section text-uppercase">Chọn khu vực</h4>
         </header>
 
         <ul class="row mt-4">
@@ -490,19 +493,19 @@
 <section class="section-subscribe padding-y-lg">
     <div class="container">
 
-        <p class="pb-2 text-center text-white">Delivering the latest product trends and industry news straight to your inbox</p>
+        <p class="pb-2 text-center text-white">Cung cấp các xu hướng sản phẩm mới nhất và tin tức ngành đến hộp thư đến của bạn</p>
 
         <div class="row justify-content-md-center">
             <div class="col-lg-5 col-md-6">
                 <form class="form-row">
                     <div class="col-md-8 col-7">
-                        <input class="form-control border-0" placeholder="Your Email" type="email">
+                        <input class="form-control border-0" placeholder="Email của bạn" type="email">
                     </div> <!-- col.// -->
                     <div class="col-md-4 col-5">
-                        <button type="submit" class="btn btn-block btn-warning"> <i class="fa fa-envelope"></i> Subscribe </button>
+                        <button type="submit" class="btn btn-block btn-warning"> <i class="fa fa-envelope"></i> Đăng ký </button>
                     </div> <!-- col.// -->
                 </form>
-                <small class="form-text text-white-50">We’ll never share your email address with a third-party. </small>
+                
             </div> <!-- col-md-6.// -->
         </div>
 

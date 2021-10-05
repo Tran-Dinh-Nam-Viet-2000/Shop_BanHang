@@ -69,7 +69,7 @@
 
                 <div  class="panel panel-primary">
                     <div style="background-color: #337ab7; padding: 10px; margin-bottom: 10px" class="panel-heading">
-                        <h5 style="text-align:center; color:white" class="panel-title">Thêm mới sản phẩm</h5>
+                        <h5 style="text-align:center; color:white" class="panel-title" id="modalTitle"></h5>
                     </div>
                     <div style="margin: 0px 10px" class="panel-body">
                         <div class="form-group">
@@ -77,11 +77,11 @@
                             <input type="text" class="form-control" id="name" placeholder="Tên sản phẩm">
                         </div>
                         <div class="form-group">
-                            <label>Hình ảnh<span style="color: red">*</span></label>
+                            <label>Hình ảnh <span style="color: red">*</span></label>
                             <input type="file" class="form-control" id="images" />
                         </div>
                         <div class="form-group">
-                            <label>Giá<span style="color: red">*</span></label>
+                            <label>Giá <span style="color: red">*</span></label>
                             <input type="text" class="form-control" id="price" placeholder="Giá">
                         </div>
 
@@ -105,12 +105,14 @@
                             <label>Nơi sản xuất <span style="color: red">*</span></label>
                             <input type="text" class="form-control" id="origin" placeholder="Nơi sản xuất">
                         </div>
+                        <div class="form-group">
+                            <label>Ngày tạo <span style="color: red">*</span></label> <br />
+                            <input type="datetime-local" id="birthdaytime" name="birthdaytime">
+                        </div>
                     </div>
                 </div>
-
-
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Xác nhận</button>
+                    <button type="button" class="btn btn-primary" id="btnSubmit">Xác nhận</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
                 </div>
             </div>
@@ -126,7 +128,27 @@
             LoadListProduct();
         })
 
+        $('#btnSubmit').click(function () {
+            let name = $('#name').val();
+            let images = $('#images').val;
+            let price = $('#price').val;
+            let typeId = $('#typeId').val;
+            let brandId = $('#brandId').val;
+            let nameBrand = $('#nameBrand').val;
+            let description = $('#description').val;
+            let origin = $('#origin').val;
+            let createDate = $('#createDate').val;
+            if (name.length == 0 || images.length == 0 || price.length == 0 || typeId.length == 0 || brandId.length == 0 || nameBrand.length == 0
+                || description.length == 0 || origin.length == 0 || createDate.length == 0) {
+                alert('Vui lòng nhập đầy đủ');
+                return;
+            }
+        });
+
+
+        //Click vào sự kiện "Thêm mới" sẽ hiển thị Modal (form nhập data)
         $('#btnAdd').click(function () {
+            $('#modalTitle').text('Thêm mới sản phẩm');
             $('#modalProduct').modal();
         })
 
