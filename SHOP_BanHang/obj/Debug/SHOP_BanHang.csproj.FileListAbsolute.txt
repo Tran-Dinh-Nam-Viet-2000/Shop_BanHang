@@ -84,4 +84,3 @@ C:\Users\Admin\Downloads\SHOP\SHOP_BanHang\SHOP_BanHang\bin\PagedList.dll
 C:\Users\Admin\Downloads\SHOP\SHOP_BanHang\SHOP_BanHang\bin\PagedList.Mvc.dll
 C:\Users\Admin\Downloads\SHOP\SHOP_BanHang\SHOP_BanHang\bin\PagedList.xml
 C:\Users\Admin\Downloads\SHOP\SHOP_BanHang\SHOP_BanHang\bin\PagedList.Mvc.xml
-C:\Users\Admin\Downloads\SHOP\SHOP_BanHang\SHOP_BanHang\obj\Debug\SHOP_BanHang.csproj.AssemblyReference.cache

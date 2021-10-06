@@ -25,9 +25,9 @@
         //[Required(ErrorMessage = "Vui lòng tải hình ảnh lên")]
         public string Images { get; set; }
 
-        //[Required(ErrorMessage = "Vui lòng nhập mã sản phẩm")]
-        [DisplayName("Loại sản phẩm")]
-        public int? CategoryId { get; set; }
+        ////[Required(ErrorMessage = "Vui lòng nhập mã sản phẩm")]
+        //[DisplayName("Loại sản phẩm")]
+        //public int? CategoryId { get; set; }
 
         //[Required(ErrorMessage = "Vui lòng nhập giá bán")]
         [DisplayName("Giá bán")]

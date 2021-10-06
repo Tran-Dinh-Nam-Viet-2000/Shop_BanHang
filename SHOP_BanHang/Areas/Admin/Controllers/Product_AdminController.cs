@@ -109,9 +109,22 @@ namespace SHOP_BanHang.Areas.Admin.Controllers
                 return Json(new { code = 300, msg = "Thất bại!" + ex.Message }, JsonRequestBehavior.AllowGet);
             }
         }
-        public ActionResult Details()
+
+        [HttpPost]
+        public JsonResult Delete(int ID)
         {
-            return View();
+            try
+            {
+                var deleteProduct = objDB.Product.SingleOrDefault(n => n.ID == ID);
+                objDB.Product.Remove(deleteProduct);
+                objDB.SaveChanges();
+                return Json(new { code = 200, msg = "Xóa sản phẩm thành công!" }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(new { code = 300, msg = "Xóa sản phẩm thất bại!" + ex.Message }, JsonRequestBehavior.AllowGet);
+                
+            }
         }
     }
 }

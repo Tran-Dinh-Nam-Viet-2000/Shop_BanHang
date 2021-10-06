@@ -68,50 +68,51 @@
         <!--Modal Create -->
         <div class="modal" tabindex="-1" role="dialog" id="modalProduct">
             <div class="modal-dialog" role="document">
-                <div style=" border-color: dodgerblue" class="modal-content">
+                <div style=" border-color: dodgerblue; width: 800px" class="modal-content">
 
-                    <div class="panel panel-primary">
+                    <div  class="panel panel-primary">
                         <div style="background-color: #337ab7; padding: 10px; margin-bottom: 10px" class="panel-heading">
                             <h5 style="text-align:center; color:white" class="panel-title" id="modalTitle"></h5>
                         </div>
                         <div style="margin: 0px 10px" class="panel-body">
-                            <div class="form-group">
-                                <label>Tên sản phẩm <span style="color: red">*</span></label>
-                                <input type="text" class="form-control" id="name" placeholder="Tên sản phẩm">
-                            </div>
-                            <div class="form-group">
-                                <label>Hình ảnh <span style="color: red">*</span></label>
-                                <input type="file" class="form-control" id="images" />
+                            <div class="form-row">
+                                <div class="col-md-6 mb-3">
+                                    <label>Tên sản phẩm <span style="color: red">*</span></label>
+                                    <input type="text" class="form-control" id="name" placeholder="Tên sản phẩm">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label>Hình ảnh <span style="color: red">*</span></label>
+                                    <input type="file" class="form-control" id="images" />
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label>Giá sản phẩm <span style="color: red">*</span></label>
+                                    <input type="text" class="form-control" id="price" placeholder="Giá">
+                                </div>
 
-                            </div>
-                            <div class="form-group">
-                                <label>Giá sản phẩm <span style="color: red">*</span></label>
-                                <input type="text" class="form-control" id="price" placeholder="Giá">
-                            </div>
-
-                            <div class="form-group">
-                                <label>Mã loại <span style="color: red">*</span></label>
-                                <input type="text" class="form-control" id="typeId" placeholder="Mã loại">
-                            </div>
-                            <div class="form-group">
-                                <label>Mã thương hiệu <span style="color: red">*</span></label>
-                                <input type="text" class="form-control" id="brandId" placeholder="Mã thương hiệu">
-                            </div>
-                            <div class="form-group">
-                                <label>Thương hiệu <span style="color: red">*</span></label>
-                                <input type="text" class="form-control" id="nameBrand" placeholder="Thương hiệu">
-                            </div>
-                            <div class="form-group">
-                                <label>Mô tả <span style="color: red">*</span></label>
-                                <input type="text" class="form-control" id="description" placeholder="Mô tả">
-                            </div>
-                            <div class="form-group">
-                                <label>Nơi sản xuất <span style="color: red">*</span></label>
-                                <input type="text" class="form-control" id="origin" placeholder="Nơi sản xuất">
-                            </div>
-                            <div class="form-group">
-                                <label>Ngày tạo <span style="color: red">*</span></label> <br />
-                                <input type="datetime-local" id="createDate" name="birthdaytime">
+                                <div class="col-md-6 mb-3">
+                                    <label>Mã loại <span style="color: red">*</span></label>
+                                    <input type="text" class="form-control" id="typeId" placeholder="Mã loại">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label>Mã thương hiệu <span style="color: red">*</span></label>
+                                    <input type="text" class="form-control" id="brandId" placeholder="Mã thương hiệu">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label>Thương hiệu <span style="color: red">*</span></label>
+                                    <input type="text" class="form-control" id="nameBrand" placeholder="Thương hiệu">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label>Mô tả <span style="color: red">*</span></label>
+                                    <input type="text" class="form-control" id="description" placeholder="Mô tả">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label>Nơi sản xuất <span style="color: red">*</span></label>
+                                    <input type="text" class="form-control" id="origin" placeholder="Nơi sản xuất">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label>Ngày tạo <span style="color: red">*</span></label> <br />
+                                    <input type="datetime-local" id="createDate" name="birthdaytime">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -122,8 +123,9 @@
                 </div>
             </div>
         </div>
+        <!--Modal Create End-->
     </div>
-    <!--Modal Create End-->
+    
 
     <!--Modal detail-->
     <div class="modal" tabindex="-1" role="dialog" id="modalDetailsProduct">
@@ -135,43 +137,42 @@
                         <h5 style="text-align:center; color:white" class="panel-title" id="modalTitleDetails"></h5>
                     </div>
                     <div style="margin: 0px 10px" class="panel-body">
-                        <div class="form-group">
-                            <h5>Tên sản phẩm:</h5>
-                            <div class="" id="Name"> </div>
-
-                        </div>
-                        <div class="form-group">
-                            <h5>Hình ảnh:</h5>
-                            <img id="Images" class="" style="height: 170px; width:auto; max-width: 500px;" />
-                        </div>
-                        <div class="form-group">
-                            <h5 for="inputAddress">Giá sản phẩm:</h5>
-                            <div class="" id="Price"> </div>
-                        </div>
-
-                        <div class="form-group">
-                            <h5>Mã loại:</h5> <div class="" id="TypeId"> </div>
-                            
-                        </div>
-                        <div class="form-group">
-                            <h5>Mã thương hiệu:</h5>
-                            <div class="" id="BrandId"> </div>
-                        </div>
-                        <div class="form-group">
-                            <h5>Thương hiệu:</h5>
-                            <div class="" id="NameBrand"> </div>
-                        </div>
-                        <div class="form-group">
-                            <h5>Mô tả:</h5>
-                            <div class="" id="Description"> </div>
-                        </div>
-                        <div class="form-group">
-                            <h5>Nơi sản xuất:</h5>
-                            <div class="" id="Origin"> </div>
-                        </div>
-                        <div class="form-group">
-                            <h5>Ngày tạo:</h5>
-                            <div class="" id="createDate"> </div>
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <h5>Tên sản phẩm:</h5>
+                                <div class="" id="Name"> </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <h5>Hình ảnh:</h5>
+                                <img id="Images" class="" style="height: 170px; width:auto; max-width: 500px;" />
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <h5 for="inputAddress">Giá sản phẩm:</h5>
+                                <div class="" id="Price"> </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <h5>Mã loại:</h5> <div class="" id="TypeId"> </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <h5>Mã thương hiệu:</h5>
+                                <div class="" id="BrandId"> </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <h5>Thương hiệu:</h5>
+                                <div class="" id="NameBrand"> </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <h5>Mô tả:</h5>
+                                <div class="" id="Description"> </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <h5>Nơi sản xuất:</h5>
+                                <div class="" id="Origin"> </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <h5>Ngày tạo:</h5>
+                                <div class="" id="createDate"> </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -189,8 +190,32 @@
         $(document).ready(function () {
             LoadListProduct();
         })
+        
+        //Sự kiện XÓA sản phẩm
+        $(document).on('click', "button[name='delete']", function () {
+            let idProduct = $(this).closest('tr').attr('id');
+            if (confirm("Bạn có chắc chắn xóa sản phẩm này không?")) {
+                $.ajax({
+                    url: '/Admin/Product_Admin/Delete',
+                    type: 'post',
+                    data: {
+                        id: idProduct
+                    },
+                success: function (data) {
+                    if (data.code == 200) {
+                        alert(data.msg);
+                        LoadListProduct();
+                        
+                    } else {
+                        alert(data.msg);
+                    }
+                   }
+                })
+            };
+        });
 
-        //Xem chi tiết sản phẩm
+
+        //Sự kiện XEM chi tiết sản phẩm
         $(document).on('click', "button[name='details']", function () {
             let idProduct = $(this).closest('tr').attr('id');
             $.ajax({
@@ -217,10 +242,10 @@
 
                         //Chuyển đổi ngày (createDate)
                         var date = new Date(parseInt((data.P.CreateDate).substr(6)));
-                        var formattedDate = (date.getDate() + 1) + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+                        var formattedDate = (date.getDate()) + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
                         $('div#createDate').text(formattedDate);
                         //show modal
-                        $('div#modalDetailsProduct').modal('show');
+                        $('div#modalDetailsProduct').modal();
                     } else {
                         alert(data.msg);
                     }
@@ -229,7 +254,7 @@
         });
 
 
-
+        //Thêm mới sản phẩm
         $('#btnSubmit').click(function () {
             let name = $('#name').val();
             let images = $('#images').val;
@@ -283,7 +308,7 @@
         });
 
 
-        //Click vào sự kiện "Thêm mới" sẽ hiển thị Modal (form nhập data)
+        //Click vào sự kiện "Thêm mới" sẽ hiển thị Modal (form nhập dữ liệu)
         $('#btnAdd').click(function () {
             $('#modalTitle').text('Thêm mới sản phẩm');
             $('#modalProduct').modal();
@@ -299,7 +324,7 @@
                     //console.log(data);
                     //dùng vòng lặp để load dữ liệu
                     if (data.code = 100) { //nếu code = 200 thì show ra
-
+                        $('#tblList').empty();
                         $.each(data.listProduct, function (k, v) { //key và value
                             var date = new Date(parseInt((v.CreateDate).substr(6)));
                             if (date.getDate() + 1 < 10) {
@@ -312,7 +337,7 @@
                             let tr = '<tr style = "text-align:center" id = "' + v.ID + '">';
                             //nối chuỗi và dùng cặp thẻ <td>
                             tr += '<td style = "width: 200px">' + v.Name + '</td>';
-                            tr += '<td>' + '<img style = "width:70px" src = "' + v.Images + '"/>' + '</td>';
+                            tr += '<td>' + '<img style = "width:100px" src = "' + v.Images + '"/>' + '</td>';
                             tr += '<td>' + v.Price + ' VNĐ' + '</td>';
                             /*tr += '<td>' + v.PriceDiscout + '</td>';*/
                             tr += '<td>' + v.TypeId + '</td>';
@@ -325,7 +350,7 @@
                             tr += '<td>';
                             tr += '<button style = " margin-right: 5px" type="button" name = "details" class=" btn btn-info"><i class="dw dw-eye"></i></button>';
                             tr += '<button style = " margin-right: 5px" type="button" name = "edit" class="btn btn-warning"><i class="dw dw-edit2"></i></button>';
-                            tr += '<button  type="button" name = "delete" class="btn btn-danger"><i class="dw dw-delete-3"></i></button>';
+                            tr += '<button  type="button"  name = "delete" class="btn btn-danger"><i class="dw dw-delete-3"></i></button>';
                             tr += '</td>';
                             tr += '</tr>';
                             $('#tblList').append(tr);

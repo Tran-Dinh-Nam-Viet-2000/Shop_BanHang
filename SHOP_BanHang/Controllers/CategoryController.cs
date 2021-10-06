@@ -16,7 +16,7 @@ namespace SHOP_BanHang.Controllers
             // Lấy dữ liệu từ DB lên theo điều kiện
             HomeModel objHomeModel = new HomeModel();
 
-            objHomeModel.ListProduct = objDatabaseDB.Product.Where(n => n.CategoryId == 1).ToList();
+            objHomeModel.ListProduct = objDatabaseDB.Product.Where(n => n.TypeId == "SP01").ToList();
 
             return View(objHomeModel);
         }
@@ -25,7 +25,7 @@ namespace SHOP_BanHang.Controllers
         {
             HomeModel objHomeModel = new HomeModel();
 
-            objHomeModel.ListProduct = objDatabaseDB.Product.Where(n => n.CategoryId == 2).ToList();
+            objHomeModel.ListProduct = objDatabaseDB.Product.Where(n => n.TypeId == "SC01").ToList();
 
             return View(objHomeModel);
         }
@@ -34,7 +34,7 @@ namespace SHOP_BanHang.Controllers
         {
             HomeModel objHomeModel = new HomeModel();
 
-            objHomeModel.ListProduct = objDatabaseDB.Product.Where(n => n.CategoryId == 3).ToList();
+            objHomeModel.ListProduct = objDatabaseDB.Product.Where(n => n.TypeId == "LT01").ToList();
 
             return View(objHomeModel);
         }
