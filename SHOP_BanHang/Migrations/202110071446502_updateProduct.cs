@@ -1,0 +1,18 @@
+namespace SHOP_BanHang.Migrations
+{
+    using System;
+    using System.Data.Entity.Migrations;
+    
+    public partial class updateProduct : DbMigration
+    {
+        public override void Up()
+        {
+            DropColumn("dbo.Products", "ProductCode");
+        }
+        
+        public override void Down()
+        {
+            AddColumn("dbo.Products", "ProductCode", c => c.String());
+        }
+    }
+}

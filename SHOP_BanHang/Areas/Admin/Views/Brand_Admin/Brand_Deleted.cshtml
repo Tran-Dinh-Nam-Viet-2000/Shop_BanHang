@@ -1,0 +1,199 @@
+﻿@model SHOP_BanHang.ConnectDB.Brand
+@{
+    ViewBag.Title = "Brand_Deleted";
+    Layout = "~/Areas/Admin/Views/Shared/Layout_Admin.cshtml";
+}
+
+@* Phần dẫn trang *@
+<div class="page-header">
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+            <nav aria-label="breadcrumb" role="navigation">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Mục đã xóa</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Thương hiệu</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</div>
+@* Phần dẫn trang - End *@
+
+@* Phần tìm kiếm và phân trang *@
+<div class="card-box mb-30">
+    @*Phần phân trang*@
+    <div class="input-group">
+
+        <div class="form-outline">
+            <input style="margin-left: 20px; margin-top: 20px; height: 38px" placeholder="Tìm thương hiệu đã xóa..." type="search" id="txtSearch" class="form-control" />
+        </div>
+        <button style="margin-left: 17px; height: 38px; margin-top: 20px " type="button" id="btnSearch" class="btn btn-primary">
+            <i class="fas fa-search"></i>
+        </button>
+        <div class="col-sm-12 col-md-6" style="display:flex;justify-content:end">
+            <div class="row d-inline-flex">
+                <div id="recordsDes" class="col-auto pt-2">
+                    @* Xử lí ở phần JS - LoadCategoryList *@
+                </div>
+                <div class="col-auto">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination" id="pagination">
+                            @* Xử lí ở phần JS LoadCategoryList *@
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*Phần phân trang - End*@
+    @* Phần table *@
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead style="text-align:center" class="thead-light">
+                <tr>
+                    <th>Mã thương hiệu</th>
+                    <th>Tên thương hiệu</th>
+                    <th>Hình ảnh</th>
+                    <th>Ngày tạo</th>
+                    <th>Trạng thái</th>
+                    <th width="300px">Thao tác</th>
+                </tr>
+            </thead>
+            <tbody id="tblList">
+                @*Dùng vòng lặp trong cặp thẻ <tr></tr> ở <script>*@
+            </tbody>
+        </table>
+    </div>
+    @* Phần table - End *@
+</div>
+@* Phần tìm kiếm và phân trang - End *@
+
+
+
+@section scripts{
+    <script>
+
+        var key = '';
+
+        $(document).ready(function () {
+            LoadListBrand_Deleted(key);
+        });
+
+        //show toast
+        var showToast = (type = "success", message = "Test") => {
+            toastr.options = {
+                "closeButton": true,
+                "debug": false,
+                "newestOnTop": true,
+                "progressBar": true,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": true,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
+            toastr[type](message);
+        }
+
+        $('#btnSearch').click(function () {
+            key = $('#txtSearch').val();
+            LoadListBrand_Deleted(key);
+        })
+
+        //Sự kiện click khôi phục thương hiệu
+        $(document).on('click', "button[name='restore']", function () {
+            let idBrandRestore = $(this).closest('tr').attr('id');
+            if (confirm("Bạn có muốn khôi phục thương hiệu này không?")) {
+                $.ajax({
+                    url: '/Admin/Brand_Admin/RestoreDeleted',
+                    type: 'post',
+                    data: {
+                        id: idBrandRestore
+                    },
+                    success: function (data) {
+                        showToast('success', data.msg);
+                        setTimeout(function () {
+                            window.location;
+                        }, 2000);
+                        LoadListBrand_Deleted(key);
+                    }
+                });
+            }
+        });
+
+        //Sự kiện click xóa thương hiệu ở Database
+        $(document).on('click', "button[name='delete']", function () {
+            let idBrandDeleted = $(this).closest('tr').attr('id');
+            if (confirm("Bạn có chắc chắn xóa thương hiệu này vĩnh viễn không?")) {
+                //sử dụng ajax để xóa data
+                $.ajax({
+                    url: '/Admin/Brand_Admin/DeletedData',
+                    type: 'post',
+                    data: {
+                        id: idBrandDeleted
+                    },
+                    success: function (data) {
+                        showToast('error', data.msg);
+                        setTimeout(function () {
+                            window.location;
+                        }, 2000);
+                        LoadListBrand_Deleted(key);
+                    }
+                });
+            }
+        });
+
+
+        function LoadListBrand_Deleted(search) {
+            $.ajax({
+                url: '/Admin/Brand_Admin/ListBrand_Deleted',
+                type: 'get',
+                data: {
+                    key: search
+                },
+                success: function (data) {
+                    if (data.code == 200) {
+                        $('#tblList').empty(); //làm trống khi thêm mới sản phẩm, tránh việc mới sẽ lặp lại nhiều sản phẩm, nghĩa là khi thêm chỉ hiển thị 1 sản phẩm
+                        //dùng vòng vặp foreach để lặp trong bảng tblList
+                        $.each(data.listBrandDeleted, function (k, v) {
+                            //Hiển thị ngày
+                            var date = new Date(parseInt((v.CreatedDate).substr(6)));
+                            if (date.getDate() < 10) {
+                                var formattedDate = "0" + (date.getDate()) + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+                            }
+                            else {
+                                var formattedDate = (date.getDate()) + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+                            }
+                            //Nếu status = 0 thì Active
+                            if (v.Status == 1) {
+                                // dùng append nối chuỗi
+                                $('#tblList').append(
+                                    //list loại sản phẩm theo ID
+                                    '<tr style="text-align:center" id="' + v.ID + '">' +
+                                        "<td style = 'font-size: 16px'>" + v.BrandCode + "</td>" +
+                                        "<td style = 'font-size: 16px'>" + v.Name + "</td>" +
+                                        '<td>' + '<img style = "width:100px" src = "' + v.Images + '"/>' + '</td>' +
+                                        "<td style = 'font-size: 16px'>" + formattedDate + "</td>" +
+                                        "<td style='text-align:center; font-size: 16px'><span class='dot dot-lg bg-success mr-2'></span><span class='text-danger'>Đã xóa</span></td>" +
+                                    // 3 nút xem, sửa ,xóa
+                                        "<td>" +
+                                            '<button style="margin-right: 10px" type="button" name="restore" class="btn btn-warning"><i class="fas fa-trash-restore"></i></button>' +
+                                            '<button  type="button"  name="delete" class="btn btn-danger btnDelete"><i class="dw dw-delete-3"></i></button>' +
+                                        "</td>" +
+                                    '<tr>'
+                                );
+                            }
+                        });
+                    }
+                }
+            });
+        }
+
+    </script>
+}

@@ -8,7 +8,7 @@ namespace SHOP_BanHang.ConnectDB
 
     public partial class Users
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        
         public int ID { get; set; }
 
         [StringLength(50)]

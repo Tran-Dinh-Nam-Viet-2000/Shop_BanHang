@@ -1,0 +1,340 @@
+﻿
+@{
+    ViewBag.Title = "Product_Deleted";
+    Layout = "~/Areas/Admin/Views/Shared/Layout_Admin.cshtml";
+}
+
+@* Phần dẫn trang *@
+<div class="page-header">
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+            <nav aria-label="breadcrumb" role="navigation">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Mục đã xóa</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Sản phẩm</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</div>
+@* Phần dẫn trang - End *@
+
+@* Phần tìm kiếm và phân trang *@
+<div class="card-box mb-30">
+    @*Phần phân trang*@
+    <div class="input-group">
+        <div style="height: 38px; margin-top: 20px" class="form-group col-auto d-inline-flex">
+            <div style="display:flex; align-items:center; margin-right:5px;">
+                <p style="margin:0;">Số lượng</p>
+            </div>
+            <div>
+                <select style="height: 38px" class="form-control" id="customSelect">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-outline">
+            <input style="margin-left: 20px; height: 38px; margin-top: 20px" placeholder="Tìm loại..." type="search" id="txtSearch" class="form-control" />
+        </div>
+        <button style="margin-left: 17px; height: 38px; margin-top: 20px " type="button" id="btnSearch" class="btn btn-primary">
+            <i class="fas fa-search"></i>
+        </button>
+        
+    </div>
+    @*Phần phân trang - End*@
+    @* Phần table *@
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead style="text-align:center" class="thead-light">
+                <tr>
+                    <th>Tên sản phẩm</th>
+                    <th>Hình ảnh</th>
+                    <th>Thương hiệu</th>
+                    <th>Loại sản phẩm</th>
+                    <th>Giá gốc</th>
+                    <th>Giá giảm</th>
+                    <th style="width: 150px;">Mô tả</th>
+                    <th>Nơi sản xuất</th>
+                    <th>Ngày tạo</th>
+                    <th>Trạng thái</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody id="tblList">
+                @*Dùng vòng lặp trong cặp thẻ <tr></tr> ở <script>*@
+            </tbody>
+        </table>
+        <div class="col-sm-12 col-md-6" style="display: flex; justify-content: end; margin-left: 830px;">
+            <div class="row d-inline-flex">
+                <div id="recordsDes" class="col-auto pt-2">
+                    @* Xử lí ở phần JS - LoadCategoryList *@
+                </div>
+                <div class="col-auto">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination" id="pagination">
+                            @* Phân trang - Xử lí ở phần JS (LoadCategoryList) *@
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    @* Phần table - End *@
+</div>
+@* Phần tìm kiếm và phân trang - End *@
+
+@section scripts{
+<script src="~/Areas/Admin/src/ckeditor/ckeditor.js"></script>
+<script>
+    //CKEDITOR.replace("description");
+    var key = '';
+    var pageSize = 5; //số lượng item mặc định là 5
+    var page = 1; //trang 1
+    var lastPage = 1;
+    $(document).ready(function () {
+        LoadListProductDeleted(key, pageSize, page);
+    });
+
+    //Sự kiện click của button tìm kiếm
+    $('#btnSearch').click(function () {
+        key = $('#txtSearch').val();
+        LoadListProductDeleted(key, pageSize, page);
+    });
+
+    //show toast
+    var showToast = (type = "success", message = "Test") => {
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": true,
+            "progressBar": true,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": true,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+        toastr[type](message);
+    }
+
+    //Khôi phục sản phẩm đã xóa
+    $(document).on('click', "button[name='restore']", function () {
+        var idProduct = $(this).closest('tr').attr('id');
+        if (confirm("Bạn có muốn khôi phục thương hiệu này không?")) {
+            $.ajax({
+                url: '/Admin/Product_Admin/RestoreData',
+                type: 'post',
+                data: {
+                    id: idProduct
+                },
+                success: function (data) {
+                    showToast('success', data.msg);
+                    setTimeout(function () {
+                        window.location;
+                    }, 2000);
+                    LoadListProductDeleted(key, pageSize, page);
+                }
+            })
+        }
+    });
+
+    //Xóa vĩnh viễn sản phẩm
+    $(document).on('click', "button[name='delete']", function () {
+        var idProduct = $(this).closest('tr').attr('id');
+        if (confirm("Bạn có muốn xóa sản phẩm này vĩnh viễn không?")) {
+            $.ajax({
+                url: '/Admin/Product_Admin/DeleteData',
+                type: 'post',
+                data: {
+                    id: idProduct
+                },
+                success: function (data) {
+                    showToast('error', data.msg);
+                    setTimeout(function () {
+                        window.location;
+                    }, 2000);
+                    LoadListProductDeleted(key, pageSize, page);
+                }
+            })
+        }
+    });
+
+    //Đổ những sản phẩm đã bị xóa ra trang list 
+    function LoadListProductDeleted(search, pageSize, page) {
+        $.ajax({
+            url: '/Admin/Product_Admin/ListProduct_Deleted',
+            type: 'get',
+            data: {
+                key: search,
+                pageSize: pageSize,
+                page: page
+            },
+            success: function (data) {
+                if (data.code == 200) {
+                    $('#tblList').empty(); //làm trống khi thêm mới SP, tránh việc mới sẽ lặp lại nhiều sản phẩm, nghĩa là khi thêm chỉ hiển thị 1 SP
+                    //dùng vòng vặp foreach để lặp trong bảng tblList
+                    $.each(data.productDeleted, function (k, v) {
+                        //Hiển thị ngày
+                        //console.log(v.CreateDate);
+                        var date = new Date(parseInt((v.CreateDate).substr(6)));
+
+                        if (date.getDate() < 10) {
+                            var formattedDate = "0" + (date.getDate()) + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+                        }
+                        else {
+                            var formattedDate = (date.getDate()) + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+                        }
+                        //Nếu status = 0 thì Active
+                        if (v.Status == 1) {
+                            // dùng append nối chuỗi
+                            $('#tblList').append(
+                                //list loại sản phẩm theo ID
+                                '<tr style="text-align:center" id="' + v.ID + '">' +
+                                    "<td style = 'font-size: 16px'>" + v.Name + "</td>" +
+                                    '<td>' + '<img style = "width:100px" src = "' + v.Images + '"/>' + '</td>' +
+                                    "<td style = 'font-size: 16px'>" + v.NameBrand + "</td>" +
+                                    "<td style = 'font-size: 16px'>" + v.CategoryId + "</td>" +
+                                    "<td style = 'font-size: 16px'>" + v.Price + ' VNĐ' + "</td>" +
+                                    "<td style = 'font-size: 16px'>" + v.PriceDiscout + ' VNĐ' + "</td>" +
+                                    "<td style = 'font-size: 16px'>" + v.Description + "</td>" +
+                                    "<td style = 'font-size: 16px'>" + v.Origin + "</td>" +
+                                    "<td style = 'font-size: 16px'>" + formattedDate + "</td>" +
+                                    "<td style='text-align:center; font-size: 14px'><span class='dot dot-lg bg-success mr-2'></span><span class='text-danger'>Đã xóa</span></td>" +
+                                // 3 nút xem, sửa ,xóa
+                                    "<td>" +
+                                        '<button style="margin-right: 10px" type="button" name="restore" class="btn btn-warning"><i class="fas fa-trash-restore"></i></button>' +
+                                        '<button  type="button"  name="delete" class="btn btn-danger btnDelete"><i class="dw dw-delete-3"></i></button>' +
+                                    "</td>" +
+                                '<tr>'
+                            );
+                        }
+                    });
+                }
+                if (data.totalRecords > data.pageSize) {
+                    $('#pagination').empty(); //làm trống (khi bấm vô số trang thì ko load theo vòng lặp)
+                    //nối chuỗi với biến thẻ li, mũi tên quay lại trang trước
+                    var li =
+                        '<li style = "cursor: pointer" class="page-item" id="first">' +
+                        '<a class="page-link" aria-label="First" >' +
+                        '<i class="fas fa-angle-left"></i>' +
+                        '<i class="fas fa-angle-left"></i>' +
+                        '</a>' +
+                        '</li >' +
+                        '<li style = "cursor: pointer" class="page-item" id="previous">' +
+                        '<a class="page-link" aria-label="Previous">' +
+                        '<i class="fas fa-angle-left"></i>' +
+                        ' </a>' +
+                        '</li>';
+                    //cho vòng lặp lấy từng trang
+                    for (var i = 0; i < data.numberPage; i++) {
+                        li += '<li style = "cursor: pointer" class="page-item page" id="' + (i + 1) + '"><a class="page-link" >' + (i + 1) + '</a></li>';
+                    }
+                    //nối chuỗi với biến thẻ li, mũi tên next trang tiếp theo
+                    li +=
+                        '<li style = "cursor: pointer" class="page-item" id="next">' +
+                        '<a class="page-link" aria-label="Next" >' +
+                        '<i class="fas fa-angle-right"></i>' +
+                        '</a>' +
+                        '</li>' +
+                        '<li style = "cursor: pointer" class="page-item" id="last">' +
+                        '<a class="page-link" aria-label="Last">' +
+                        '<i class="fas fa-angle-right"></i>' +
+                        '<i class="fas fa-angle-right"></i>' +
+                        '</a>' +
+                        '</li>';
+                    $('#pagination').append(li); //dùng thẻ li nối chuỗi
+
+                    //Phần xem sản phẩm của 1 trang trong tổng sản phẩm (vd: 5sp trong 100sp)
+                    $('#recordsDes').empty();
+                    var recordDes = 'Hiển thị ' + ((data.pageIndex * data.pageSize) - (data.pageSize - 1)) + ' - ' + data.pageIndex * data.pageSize + ' trong ' + data.totalRecords + ' loại';
+                    $('#recordsDes').append(recordDes);
+                    $('li#' + data.pageIndex).addClass('active'); //hỏi anh Vũ
+                    //Nếu có 1 trang thì tắt click mũi tên đầu
+                    if (data.pageIndex == 1) {
+                        $('li#previous').addClass('disabled');
+                        $('li#first').addClass('disabled');
+                    }
+                    //Nếu trang bằng tổng số trang, tức là có 1 trang thì tắt click mũi tên sau
+                    if (data.pageIndex == data.numberPage) {
+                        $('li#next').addClass('disabled');
+                        $('li#last').addClass('disabled');
+                    }
+                    lastPage = data.numberPage;
+                } else {
+                    //Ngược lại thì làm trống
+                    $('#pagination').empty();
+                    $('#recordsDes').empty();
+                }
+            }
+        });
+    }
+    //Thay số lượng theo lựa chọn
+    $('#customSelect').change(function () {
+        pageSize = parseInt($('#customSelect').val());
+        page = 1;
+        LoadListProductDeleted(key, pageSize, page);
+    });
+    //Chọn số lượng SP muốn hiển thị
+    $('#pagination').on('click', "li.page", function () {
+        key = $('#txtSearch').val(); //nhập từ khóa tìm kiếm
+        page = parseInt($(this).text());
+        pageSize = parseInt($('#customSelect').val());
+        LoadListProductDeleted(key, pageSize, page);
+    });
+    //sự kiện click vào mũi tên đầu
+    $('#pagination').on('click', "li#previous", function () {
+        key = $('#txtSearch').val();
+        if ($('li#previous').hasClass('disabled')) {
+            page = page;
+        } else {
+            page = page - 1;
+        }
+        pageSize = parseInt($('#customSelect').val());
+        LoadListProductDeleted(key, pageSize, page);
+    });
+    //sự kiện click vào mũi tên đầu
+    $('#pagination').on('click', "li#first", function () {
+        key = $('#txtSearch').val();
+        if ($('li#first').hasClass('disabled')) {
+            page = page;
+        } else {
+            page = 1;
+        }
+        pageSize = parseInt($('#customSelect').val());
+        LoadListProductDeleted(key, pageSize, page);
+    });
+    //sự kiện click vào mũi tên sau
+    $('#pagination').on('click', "li#next", function () {
+        key = $('#txtSearch').val();
+        if ($('li#next').hasClass('disabled')) {
+            page = page;
+        } else {
+            page = page + 1;
+        }
+        pageSize = parseInt($('#customSelect').val());
+        LoadListProductDeleted(key, pageSize, page);
+    });
+    //sự kiện click vào mũi tên sau
+    $('#pagination').on('click', "li#last", function () {
+        key = $('#txtSearch').val();
+        if ($('li#last').hasClass('disabled')) {
+            page = page;
+        } else {
+            page = lastPage;
+        }
+        pageSize = parseInt($('#customSelect').val());
+        LoadListProductDeleted(key, pageSize, page);
+    });
+
+</script>
+
+
+}

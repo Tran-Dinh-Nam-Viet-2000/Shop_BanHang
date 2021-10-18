@@ -1,0 +1,526 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/Layout_Admin.cshtml";
+}
+
+@* Phần dẫn trang *@
+<div class="page-header">
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+            <nav aria-label="breadcrumb" role="navigation">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Mục quản lý</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Loại sản phẩm</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</div>
+@* Phần dẫn trang - End *@
+
+@* Table - Phần tìm kiếm và phân trang *@
+<div class="card-box mb-30">
+    <div class="pd-20">
+        <button type="button" class="btn btn-primary" id="btnAdd"><i class="fas fa-plus" style="margin-right: 5px"></i>Thêm mới</button>
+    </div>
+    @*Phần phân trang*@
+    <div class="input-group">
+        <div style="height: 38px" class="form-group col-auto d-inline-flex">
+            <div style="display:flex; align-items:center; margin-right:5px;">
+                <p style="margin:0;">Số lượng</p>
+            </div>
+            <div>
+                <select style="height: 38px" class="form-control" id="customSelect">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-outline">
+            <input style="margin-left: 20px; height: 38px" placeholder="Tìm loại..." type="search" id="txtSearch" class="form-control" />
+        </div>
+        <button style="margin-left: 17px; height:38px; " type="button" id="btnSearch" class="btn btn-primary">
+            <i class="fas fa-search"></i>
+        </button>
+        <div class="col-sm-12 col-md-6" style="display: flex; justify-content: end; margin-left: 323px;">
+            <div class="row d-inline-flex">
+                <div id="recordsDes" class="col-auto pt-2">
+                    @* Xử lí ở phần JS - LoadCategoryList *@
+                </div>
+                <div class="col-auto">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination" id="pagination">
+                            @* Phân trang - Xử lí ở phần JS (LoadCategoryList) *@
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*Phần phân trang - End*@
+    @* Phần table *@
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead style="text-align:center" class="thead-light">
+                <tr>
+                    <th>Mã loại</th>
+                    <th>Loại sản phẩm</th>
+                    <th>Ngày tạo</th>
+                    <th>Trạng thái</th>
+                    <th width="300px">Thao tác</th>
+                </tr>
+            </thead>
+            <tbody id="tblList">
+                @*Dùng vòng lặp trong cặp thẻ <tr></tr> ở <script>*@
+            </tbody>
+        </table>
+    </div>
+    @* Phần table - End *@
+</div>
+@* Table - Phần tìm kiếm và phân trang - End *@
+
+<!--Modal Create -->
+<div class="modal" tabindex="-1" role="dialog" id="modalCategory">
+    <div class="modal-dialog" role="document">
+        <div style=" border-color: dodgerblue; width: 790px" class="modal-content">
+            <div class="panel panel-primary">
+                <div style="background-color: #337ab7; padding: 10px; margin-bottom: 10px" class="panel-heading">
+                    <h5 style="text-align:center; color:white" class="panel-title" id="modalTitle"></h5>
+                </div>
+                <div style="margin: 0px 10px" class="panel-body">
+                    <input type="text" hidden id="IdCa" value="" />
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label>Mã loại <span style="color: red">*</span></label>
+                            <input type="text" class="form-control" id="categoryCode" placeholder="Mã loại">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label>Loại sản phẩm <span style="color: red">*</span></label>
+                            <input type="text" class="form-control" id="name" placeholder="Loại sản phẩm">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="btnSubmit">Xác nhận</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Modal Create End-->
+
+<!--Modal Details-->
+<div class="modal" tabindex="-1" role="dialog" id="modalDetailsCategory">
+    <div class="modal-dialog" role="document">
+        <div style=" border-color: dodgerblue" class="modal-content">
+            <div class="panel panel-primary">
+                <div style="background-color: #337ab7; padding: 10px; margin-bottom: 10px" class="panel-heading">
+                    <h5 style="text-align:center; color:white" class="panel-title" id="modalTitleDetails"></h5>
+                </div>
+                <div style="margin: 0px 10px" class="panel-body">
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <h5>Mã loại:</h5>
+                            <div class="" id="CategoryId"> </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <h5>Loại sản phẩm:</h5>
+                            <div class="" id="Name"> </div>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <h5>Ngày tạo:</h5>
+                            <div class="" id="CreateDate"> </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <h5>Trạng thái: </h5>
+                            <div class="" id="Status"> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Modal Details End-->
+
+<!--JS -->
+@section scripts{
+    <script>
+        var key = ''; //Nếu chưa nhập gì vào ô tìm kiếm thì mặc định là chuỗi rỗng
+        var pageSize = 5; //số lượng item mặc định là 5
+        var page = 1; //trang 1
+        var lastPage = 1;
+        $(document).ready(function () {
+            LoadListCategory(key, pageSize, page);
+        })
+
+        //show toast
+        var showToast = (type = "success", message = "Test") => {
+            toastr.options = {
+                "closeButton": true,
+                "debug": false,
+                "newestOnTop": true,
+                "progressBar": true,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": true,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
+            toastr[type](message);
+        }
+
+        //Sự kiện click của button tìm kiếm
+        $('#btnSearch').click(function () {
+            key = $('#txtSearch').val(); //gán key bằng 1 giá trị khi nhập vào ô tìm kiếm
+            LoadListCategory(key, pageSize, page);
+        });
+
+        //Sự kiện xóa loại sản phẩm
+        $(document).on('click', "button[name='delete']", function () {
+            let idCategory = $(this).closest('tr').attr('id');
+            if (confirm("Bạn có chắc chắn xóa loại sản phẩm này không?")) {
+                $.ajax({
+                    url: '/Admin/Category_Admin/Delete',
+                    type: 'post',
+                    data: {
+                        id: idCategory
+                    },
+                    success: function (data) {
+                        showToast('error', data.msg);
+                        setTimeout(function () {
+                            window.location;
+                        }, 2000);
+                        LoadListCategory(key, pageSize, page);
+                    }
+                });
+            }
+        });
+
+        //Sự kiện sửa loại sản phẩm
+        $(document).on('click', "button[name='edit']", function () {
+            let idCategory = $(this).closest('tr').attr('id');
+            $.ajax({
+                url: '/Admin/Category_Admin/Details',
+                type: 'get',
+                data: {
+                    id: idCategory
+                },
+                success: function (data) {
+                    if (data.code == 100) //nếu code = 100 thì thực hiện
+                    {
+                        var data = JSON.parse(data.C);
+                        $('#modalTitle').text('Chỉnh sửa loại sản phẩm');
+                        //Lấy giá trị đã có
+                        $('#categoryCode').val(data.CategoryCode);
+                        $('#name').val(data.Name);
+                        //gán giá trị cho text hidden có id là id = idCategory(id của từng mã)
+                        //Khi chỉnh sửa thì IdCa sẽ lấy giá trị của idCategory để chỉnh sửa
+                        $('#IdCa').val(idCategory);
+                        $('#modalCategory').modal();  //show modal
+                    } else {
+                        alert(data.msg);
+                    }
+                }
+            });
+        })
+
+        //Sự kiện xem chi tiết loại sản phẩm
+        $(document).on('click', "button[name='details']", function () {
+            var idCategory = $(this).closest('tr').attr('id');
+
+            //sử dụng ajax để lấy thông tin mã sản phẩm
+            $.ajax({
+                url: '/Admin/Category_Admin/Details',
+                type: 'get',
+                //lấy dữ liệu theo ID
+                data: {
+                    id: idCategory
+                },
+                success: function (data) {
+                    if (data.code == 100) {
+                        //Tránh lỗi vòng lặp qua Json
+                        var data = JSON.parse(data.C);
+                        //Modal tiêu đề
+                        $('#modalTitleDetails').text('Thông tin loại sản phẩm');
+
+                        //Xét giá trị cho từng text box id=''
+                        $('div#Name').text(data.Name);
+                        $('div#CategoryId').text(data.CategoryCode);
+                        //Chuyển đổi ngày (createDate)
+                        var date = new Date(data.CreateDate);
+                        var formattedDate = (date.getDate()) + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+                        $('div#CreateDate').text(formattedDate);
+                        //$('div#Status').text(data.C.Status);
+                        if (data.Status == 0) {
+                            $('div#Status').html("<span class='dot dot-lg bg-warning mr-2'></span><span class='text-success'>Đang tồn tại</span>");
+                        }
+                        $('div#modalDetailsCategory').modal();
+                    } else {
+                        alert(data.msg)
+                    }
+                }
+            });
+        })
+
+        //Sự kiện button Submit thêm mới loại sản phẩm (btnSubmit)
+        $('#btnSubmit').click(function () {
+            let name = $('#name').val().trim();
+            let categoryCode = $('#categoryCode').val().trim();
+            //nếu người dùng không nhập gì thì thông báo
+            if (name.length == 0 || categoryCode.length == 0) {
+                alert("Vui lòng nhập đầy đủ tất cả các mục!");
+                return;
+            }
+            // Idca dùng để phân biệt 2 nút btnSubmit (1 là thêm, 2 là sửa) vì dùng cùng 1 Modal
+            let IdCa = $('#IdCa').val().trim();
+            //nếu Id = 0 thì cho thêm mới
+            if (IdCa.length == 0) {
+                //dùng ajax để thêm mới mã loại sản phẩm
+                $.ajax({
+                    url: '/Admin/Category_Admin/Create',
+                    type: 'POST',
+                    data: {
+                        name: name,
+                        categoryCode: categoryCode
+                    },
+                    success: function (data) {
+                        if (data.code == 100) //nếu code = 100 thì thực hiện
+                        {
+                            showToast('success', data.msg);
+                            setTimeout(function () {
+                                window.location;
+                            }, 2000);
+                            $('#modalCategory').modal('hide');
+                            LoadListCategory(key, pageSize, page);
+                            $('#name').val(''); //reset lại trường nhập
+                            $('#categoryCode').val(''); //reset lại trường nhập
+                        } else {
+                            alert(data.msg);
+                        }
+                    }
+                });
+            } else {
+                //Nếu lớn hơn 0 thì chỉnh sửa mã loại sp
+                //Dùng ajax để chỉnh sửa mã loại sp
+                $.ajax({
+                    url: '/Admin/Category_Admin/Edit',
+                    type: 'post',
+                    //Có 3 giá trị id,name,categoryCode
+                    data: {
+                        id: IdCa,
+                        name: name,
+                        categoryCode: categoryCode
+                    },
+                    success: function (data) {
+                        if (data.code == 200) {
+                            //thông báo khi thành công
+                            showToast('success', data.msg);
+                            setTimeout(function () {
+                                window.location;
+                            }, 2000);
+                            //ẩn model
+                            $('#modalCategory').modal('hide');
+                            //load lại lớp sau khi chỉnh sửa
+                            LoadListCategory(key, pageSize, page);
+                            $('#name').val(''); //reset lại trường nhập
+                            $('#categoryCode').val(''); //reset lại trường nhập
+                        } else {
+                            //show lỗi nếu thất bại
+                            alert(data.msg);
+                        }
+                    }
+                });
+            }
+
+        });
+
+
+        //Nút thêm mới
+        $('#btnAdd').click(function () {
+            $('#modalTitle').text('Thêm mới mã sản phẩm'); //tiêu đề
+            $('#IdCa').val(''); //thêm mới thì IdCa là rỗng
+            $('#name').val(''); //reset lại trường nhập khi đã bấm vào edit
+            $('#categoryCode').val('');//reset lại trường nhập khi đã bấm vào edit
+            $('#modalCategory').modal(); //show modal
+        })
+
+        //Dùng Ajax list mã sản phẩm dưới DB lên
+        function LoadListCategory(search, pageSize, page) {
+            //Sử dụng Ajax
+            $.ajax({
+                url: '/Admin/Category_Admin/ListCategory',
+                type: 'GET',
+                data: {
+                    key: search,
+                    pageSize: parseInt(pageSize),
+                    page: parseInt(page),
+                },
+                success: function (data) {
+                    //console.log(data);
+                    //List loại sản phẩm
+                    if (data.code == 100) {
+                        $('#tblList').empty(); //làm trống khi thêm mới sản phẩm, tránh việc mới sẽ lặp lại nhiều sản phẩm, nghĩa là khi thêm chỉ hiển thị 1 sản phẩm
+                        //dùng vòng vặp foreach để lặp trong bảng tblList
+                        $.each(data.listCategory, function (k, v) {
+                            //Hiển thị ngày
+                            var date = new Date(parseInt((v.CreateDate).substr(6)));
+                            if (date.getDate() + 1 < 10) {
+                                var formattedDate = "0" + (date.getDate()) + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+                            }
+                            else {
+                                var formattedDate = (date.getDate()) + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+                            }
+                            //Nếu status = 0 thì Active
+                            if (v.Status == 0) {
+                                // dùng append nối chuỗi
+                                $('#tblList').append(
+                                    //list loại sản phẩm theo ID
+                                    '<tr style="text-align:center" id="' + v.ID + '">' +
+                                        "<td style = 'font-size: 16px'>" + v.CategoryCode + "</td>" +
+                                        "<td style = 'font-size: 16px'>" + v.Name + "</td>" +
+                                        "<td style = 'font-size: 16px'>" + formattedDate + "</td>" +
+                                        "<td style='text-align:center; font-size: 16px'><span class='dot dot-lg bg-success mr-2'></span><span class='text-success'>Đang tồn tại</span></td>" +
+                                    // 3 nút xem, sửa ,xóa
+                                        "<td>" +
+                                            '<button style="margin-right: 5px" type="button" name="details" class="btn btn-info"><i class="dw dw-eye"></i></button>' +
+                                            '<button style="margin-right: 5px" type="button" name="edit" class="btn btn-warning"><i class="dw dw-edit2"></i></button>' +
+                                            '<button  type="button"  name="delete" class="btn btn-danger btnDelete"><i class="dw dw-delete-3"></i></button>' +
+                                        "</td>" +
+                                    '<tr>'
+                                );
+                            }
+                        });
+                    }
+                    //Phần phân trang
+                    if (data.totalRecords > data.pageSize) {
+                        $('#pagination').empty(); //làm trống (khi bấm vô số trang thì ko load theo vòng lặp)
+                        //nối chuỗi với biến thẻ li, mũi tên quay lại trang trước
+                        var li =
+                            '<li style = "cursor: pointer" class="page-item" id="first">' +
+                            '<a class="page-link" aria-label="First" >' +
+                            '<i class="fas fa-angle-left"></i>' +
+                            '<i class="fas fa-angle-left"></i>' +
+                            '</a>' +
+                            '</li >' +
+                            '<li style = "cursor: pointer" class="page-item" id="previous">' +
+                            '<a class="page-link" aria-label="Previous">' +
+                            '<i class="fas fa-angle-left"></i>' +
+                            ' </a>' +
+                            '</li>';
+                        //cho vòng lặp lấy từng trang
+                        for (var i = 0; i < data.numberPage; i++) {
+                            li += '<li style = "cursor: pointer" class="page-item page" id="' + (i + 1) + '"><a class="page-link" >' + (i + 1) + '</a></li>';
+                        }
+                        //nối chuỗi với biến thẻ li, mũi tên next trang tiếp theo
+                        li +=
+                            '<li style = "cursor: pointer" class="page-item" id="next">' +
+                            '<a class="page-link" aria-label="Next" >' +
+                            '<i class="fas fa-angle-right"></i>' +
+                            '</a>' +
+                            '</li>' +
+                            '<li style = "cursor: pointer" class="page-item" id="last">' +
+                            '<a class="page-link" aria-label="Last">' +
+                            '<i class="fas fa-angle-right"></i>' +
+                            '<i class="fas fa-angle-right"></i>' +
+                            '</a>' +
+                            '</li>';
+                        $('#pagination').append(li); //dùng thẻ li nối chuỗi
+
+                        //Phần xem sản phẩm của 1 trang trong tổng sản phẩm (vd: 1-5sp trong 100sp)
+                        $('#recordsDes').empty();
+                        var recordDes = 'Hiển thị ' + ((data.pageIndex * data.pageSize) - (data.pageSize - 1)) + ' - ' + data.pageIndex * data.pageSize + ' trong ' + data.totalRecords + ' loại';
+                        $('#recordsDes').append(recordDes);
+                        $('li#' + data.pageIndex).addClass('active'); //hỏi anh Vũ
+                        //Nếu có 1 trang thì tắt click mũi tên đầu
+                        if (data.pageIndex == 1) {
+                            $('li#previous').addClass('disabled');
+                            $('li#first').addClass('disabled');
+                        }
+                        //Nếu trang bằng tổng số trang, tức là có 1 trang thì tắt click mũi tên sau
+                        if (data.pageIndex == data.numberPage) {
+                            $('li#next').addClass('disabled');
+                            $('li#last').addClass('disabled');
+                        }
+                        lastPage = data.numberPage;
+                    } else {
+                        //Ngược lại thì làm trống
+                        $('#pagination').empty();
+                        $('#recordsDes').empty();
+                    }
+                }
+            });
+
+        }
+        //Thay số lượng theo lựa chọn
+        $('#customSelect').change(function () {
+            pageSize = parseInt($('#customSelect').val());
+            page = 1;
+            LoadListCategory(key, pageSize, page);
+        });
+        //Chọn số lượng mã muốn hiển thị
+        $('#pagination').on('click', "li.page", function () {
+            key = $('#txtSearch').val(); //nhập từ khóa tìm kiếm
+            page = parseInt($(this).text());
+            pageSize = parseInt($('#customSelect').val());
+            LoadListCategory(key, pageSize, page);
+        });
+        //sự kiện click vào mũi tên đầu
+        $('#pagination').on('click', "li#previous", function () {
+            key = $('#txtSearch').val();
+            if ($('li#previous').hasClass('disabled')) {
+                page = page;
+            } else {
+                page = page - 1;
+            }
+            pageSize = parseInt($('#customSelect').val());
+            LoadListCategory(key, pageSize, page);
+        });
+        //sự kiện click vào mũi tên đầu
+        $('#pagination').on('click', "li#first", function () {
+            key = $('#txtSearch').val();
+            if ($('li#first').hasClass('disabled')) {
+                page = page;
+            } else {
+                page = 1;
+            }
+            pageSize = parseInt($('#customSelect').val());
+            LoadListCategory(key, pageSize, page);
+        });
+        //sự kiện click vào mũi tên sau
+        $('#pagination').on('click', "li#next", function () {
+            key = $('#txtSearch').val();
+            if ($('li#next').hasClass('disabled')) {
+                page = page;
+            } else {
+                page = page + 1;
+            }
+            pageSize = parseInt($('#customSelect').val());
+            LoadListCategory(key, pageSize, page);
+        });
+        //sự kiện click vào mũi tên sau
+        $('#pagination').on('click', "li#last", function () {
+            key = $('#txtSearch').val();
+            if ($('li#last').hasClass('disabled')) {
+                page = page;
+            } else {
+                page = lastPage;
+            }
+            pageSize = parseInt($('#customSelect').val());
+            LoadListCategory(key, pageSize, page);
+        });
+    </script>
+}

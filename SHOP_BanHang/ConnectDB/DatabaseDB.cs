@@ -19,33 +19,7 @@ namespace SHOP_BanHang.ConnectDB
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Brand>()
-                .Property(e => e.Images)
-                .IsFixedLength();
-
-            //modelBuilder.Entity<Brand>()
-            //    .Property(e => e.Slug)
-            //    .IsUnicode(false);
-
-            modelBuilder.Entity<Category>()
-                .Property(e => e.Slug)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Product>()
-                .Property(e => e.NameBrand)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Users>()
-                .Property(e => e.Username)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Users>()
-                .Property(e => e.Password)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Users>()
-                .Property(e => e.Email)
-                .IsUnicode(false);
+            
         }
     }
 }

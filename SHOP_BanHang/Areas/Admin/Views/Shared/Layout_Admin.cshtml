@@ -23,7 +23,7 @@
     <link rel="stylesheet" type="text/css" href="~/Areas/Admin/src/plugins/datatables/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" type="text/css" href="~/Areas/Admin/src/plugins/datatables/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" type="text/css" href="~/Areas/Admin/vendors/styles/style.css">
-
+    <link href="~/Content/toastr.min.css" rel="stylesheet" />
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
@@ -35,19 +35,6 @@
         gtag('config', 'UA-119386393-1');</script>
 </head>
 <body>
-    @*<div class="pre-loader">
-            <div class="pre-loader-box">
-                <div class="loader-logo"><img src="~/Areas/Admin/vendors/images/deskapp-logo.svg" alt=""></div>
-                <div class='loader-progress' id="progress_div">
-                    <div class='bar' id='bar1'></div>
-                </div>
-                <div class='percent' id='percent1'>0%</div>
-                <div class="loading-text">
-                    Loading...
-                </div>
-            </div>
-        </div>*@
-
     <div class="header">
         <div class="header-left">
             <div class="menu-icon dw dw-menu"></div>
@@ -267,38 +254,28 @@
 
                     <a href="~/Admin/Home/Index" class="dropdown-toggle">
 
-                        <span class="micon dw dw-house-1"></span><span class="mtext">Trang chủ</span>
+                        <span class="micon dw dw-house-1"></span><span class="mtext">Dashboard</span>
                     </a>
-                    @*<ul class="submenu">
-                            <li><a href="index.html">Dashboard style 1</a></li>
-                            <li><a href="index2.html">Dashboard style 2</a></li>
-                        </ul>*@
-
                     <li class="dropdown">
                         <a href="javascript:;" class="dropdown-toggle">
-                            <span class="micon dw dw-edit2"></span><span class="mtext">Forms</span>
+                            <span class="micon dw dw-library"></span><span class="mtext">Mục quản lý</span>
                         </a>
                         <ul class="submenu">
-                            <li><a href="form-basic.html">Form Basic</a></li>
-                            <li><a href="advanced-components.html">Advanced Components</a></li>
-                            <li><a href="form-wizard.html">Form Wizard</a></li>
-                            <li><a href="html5-editor.html">HTML5 Editor</a></li>
-                            <li><a href="form-pickers.html">Form Pickers</a></li>
-                            <li><a href="image-cropper.html">Image Cropper</a></li>
-                            <li><a href="image-dropzone.html">Image Dropzone</a></li>
+                            <li><a href="~/Admin/Product_Admin/Index">Sản phẩm</a></li>
+                            <li><a href="~/Admin/Category_Admin/Index">Loại sản phẩm</a></li>
+                            <li><a href="~/Admin/Brand_Admin/Index">Thương hiệu</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
                         <a href="javascript:;" class="dropdown-toggle">
-                            <span class="micon dw dw-library"></span><span class="mtext">Sản phẩm</span>
+                            <span class="micon dw dw-library"></span><span class="mtext">Mục đã xóa</span>
                         </a>
                         <ul class="submenu">
-                            <li><a href="~/Admin/Product_Admin/Index">Quản lý sản phẩm</a></li>
-                            <li><a href="basic-table.html">Quản lý thương hiệu</a></li>
-                            <li><a href="basic-table.html">Quản lý đơn hàng</a></li>
+                            <li><a href="~/Admin/Product_Admin/Product_Deleted">Sản phẩm</a></li>
+                            <li><a href="~/Admin/Category_Admin/Category_Deleted">Loại sản phẩm</a></li>
+                            <li><a href="~/Admin/Brand_Admin/Brand_Deleted">Thương hiệu</a></li>
                         </ul>
                     </li>
-
                 </ul>
             </div>
         </div>
@@ -306,9 +283,9 @@
     <div class="mobile-menu-overlay"></div>
 
     <div class="main-container">
-        <div  style="width: 1600px" class="pd-ltr-20">
+        <div style="width: 1700px" class="pd-ltr-20">
             @RenderBody()
-            <div  class="footer-wrap pd-20 mb-20 card-box">
+            <div class="footer-wrap pd-20 mb-20 card-box">
                 Alistyle - Thương hiệu về hàng công nghệ điện tử <a href="~/Home/Index" target="_blank">Alistyle</a>
             </div>
         </div>
@@ -318,19 +295,8 @@
     <script src="~/Areas/Admin/vendors/scripts/script.min.js"></script>
     <script src="~/Areas/Admin/vendors/scripts/process.js"></script>
     <script src="~/Areas/Admin/vendors/scripts/layout-settings.js"></script>
-    @*<script src="~/Areas/Admin/src/plugins/datatables/js/jquery.dataTables.min.js"></script>
-    <script src="~/Areas/Admin/src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
-    <script src="~/Areas/Admin/src/plugins/datatables/js/dataTables.responsive.min.js"></script>
-    <script src="~/Areas/Admin/src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>*@
-    <!-- buttons for Export datatable -->
-    @*<script src="~/Areas/Admin/src/plugins/datatables/js/dataTables.buttons.min.js"></script>
-    <script src="~/Areas/Admin/src/plugins/datatables/js/buttons.bootstrap4.min.js"></script>
-    <script src="~/Areas/Admin/src/plugins/datatables/js/buttons.print.min.js"></script>
-    <script src="~/Areas/Admin/src/plugins/datatables/js/buttons.html5.min.js"></script>
-    <script src="~/Areas/Admin/src/plugins/datatables/js/buttons.flash.min.js"></script>
-    <script src="~/Areas/Admin/src/plugins/datatables/js/pdfmake.min.js"></script>
-    <script src="~/Areas/Admin/src/plugins/datatables/js/vfs_fonts.js"></script>
-    <script src="vendors/scripts/datatable-setting.js"></script>*@
+
+    <script src="~/Scripts/toastr.min.js"></script>
 
     @RenderSection("scripts", required: false)
 </body>

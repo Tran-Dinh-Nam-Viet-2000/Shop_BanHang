@@ -20,19 +20,19 @@ namespace SHOP_BanHang.Controllers
 
             objHomeModel.ListProduct = objDatabaseDB.Product.ToList();
 
-            objHomeModel.ListBrand = objDatabaseDB.Brand.ToList();
+            objHomeModel.ListBrand = objDatabaseDB.Brand.Where(n => n.Status == ConnectDB.Enum_Status.Status.Active).ToList();
 
             objHomeModel.ListDiscountProduct = objDatabaseDB.Product.Take(6).ToList();
 
-            objHomeModel.ListAppleProduct = objDatabaseDB.Product.Where(n => n.BrandId == "AP01").ToList();
+            objHomeModel.ListAppleProduct = objDatabaseDB.Product.Where(n => n.Brand.Name == "Apple" && n.Status == ConnectDB.Enum_Status.Status.Active).ToList();
 
-            objHomeModel.ListSamsungProduct = objDatabaseDB.Product.Where(n => n.BrandId == "SS01").ToList();
+            objHomeModel.ListSamsungProduct = objDatabaseDB.Product.Where(n => n.Brand.Name == "Samsung" && n.Status == ConnectDB.Enum_Status.Status.Active).ToList();
 
-            objHomeModel.ListXiaomiProduct = objDatabaseDB.Product.Where(n => n.BrandId == "XM01").ToList();
+            objHomeModel.ListXiaomiProduct = objDatabaseDB.Product.Where(n => n.Brand.Name == "Xiaomi" && n.Status == ConnectDB.Enum_Status.Status.Active).ToList();
 
-            objHomeModel.ListLGProduct = objDatabaseDB.Product.Where(n => n.BrandId == "LG01").ToList();
+            objHomeModel.ListLGProduct = objDatabaseDB.Product.Where(n => n.Brand.Name == "LG" && n.Status == ConnectDB.Enum_Status.Status.Active).ToList();
 
-            objHomeModel.ListDellProduct = objDatabaseDB.Product.Where(n => n.BrandId == "DE01").ToList();
+            objHomeModel.ListDellProduct = objDatabaseDB.Product.Where(n => n.Brand.Name == "Dell" && n.Status == ConnectDB.Enum_Status.Status.Active).ToList();
 
 
             return View(objHomeModel);

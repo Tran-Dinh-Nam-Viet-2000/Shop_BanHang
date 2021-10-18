@@ -84,3 +84,9 @@ C:\Users\Admin\Downloads\SHOP\SHOP_BanHang\SHOP_BanHang\bin\PagedList.dll
 C:\Users\Admin\Downloads\SHOP\SHOP_BanHang\SHOP_BanHang\bin\PagedList.Mvc.dll
 C:\Users\Admin\Downloads\SHOP\SHOP_BanHang\SHOP_BanHang\bin\PagedList.xml
 C:\Users\Admin\Downloads\SHOP\SHOP_BanHang\SHOP_BanHang\bin\PagedList.Mvc.xml
+C:\Users\Admin\Downloads\SHOP\SHOP_BanHang\SHOP_BanHang\obj\Debug\SHOP_BanHang.Migrations.updateCategory.resources
+C:\Users\Admin\Downloads\SHOP\SHOP_BanHang\SHOP_BanHang\obj\Debug\SHOP_BanHang.csproj.GenerateResource.cache
+C:\Users\Admin\Downloads\SHOP\SHOP_BanHang\SHOP_BanHang\obj\Debug\SHOP_BanHang.Migrations.updateProduct.resources
+C:\Users\Admin\Downloads\SHOP\SHOP_BanHang\SHOP_BanHang\obj\Debug\SHOP_BanHang.Migrations.updateBrand.resources
+C:\Users\Admin\Downloads\SHOP\SHOP_BanHang\SHOP_BanHang\obj\Debug\SHOP_BanHang.Migrations.updateProduct1.resources
+C:\Users\Admin\Downloads\SHOP\SHOP_BanHang\SHOP_BanHang\obj\Debug\SHOP_BanHang.Migrations.updateProduct2.resources

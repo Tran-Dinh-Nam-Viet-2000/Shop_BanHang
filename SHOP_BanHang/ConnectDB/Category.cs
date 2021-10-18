@@ -1,34 +1,30 @@
 namespace SHOP_BanHang.ConnectDB
 {
+    using SHOP_BanHang.ConnectDB.Enum_Status;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Category")]
-    public partial class Category
+    
+    public class Category
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        
         public int ID { get; set; }
 
+        [Required]
         [StringLength(150)]
         public string Name { get; set; }
 
-        [StringLength(150)]
-        public string Images { get; set; }
-
+        [Required]
         [StringLength(100)]
-        public string Slug { get; set; }
-
-        public bool? ShowOnHomePage { get; set; }
-
-        public int? DisplayOrder { get; set; }
-
+        public string CategoryCode { get; set; }
+         
         public DateTime? CreateDate { get; set; }
 
-        public DateTime? UpdatedDate { get; set; }
+        public Status Status { get; set; }
 
-        public bool? Deleted { get; set; }
+        public virtual ICollection<Product> Products { get; set; }
     }
 }
