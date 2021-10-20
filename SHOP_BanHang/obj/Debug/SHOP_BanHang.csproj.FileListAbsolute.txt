@@ -90,3 +90,4 @@ C:\Users\Admin\Downloads\SHOP\SHOP_BanHang\SHOP_BanHang\obj\Debug\SHOP_BanHang.M
 C:\Users\Admin\Downloads\SHOP\SHOP_BanHang\SHOP_BanHang\obj\Debug\SHOP_BanHang.Migrations.updateBrand.resources
 C:\Users\Admin\Downloads\SHOP\SHOP_BanHang\SHOP_BanHang\obj\Debug\SHOP_BanHang.Migrations.updateProduct1.resources
 C:\Users\Admin\Downloads\SHOP\SHOP_BanHang\SHOP_BanHang\obj\Debug\SHOP_BanHang.Migrations.updateProduct2.resources
+C:\Users\Admin\Downloads\SHOP\SHOP_BanHang\SHOP_BanHang\obj\Debug\SHOP_BanHang.csproj.AssemblyReference.cache

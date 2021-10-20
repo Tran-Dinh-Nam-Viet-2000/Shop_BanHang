@@ -20,7 +20,7 @@ namespace SHOP_BanHang.Controllers
 
             objHomeModel.ListProduct = objDatabaseDB.Product.ToList();
 
-            objHomeModel.ListBrand = objDatabaseDB.Brand.Where(n => n.Status == ConnectDB.Enum_Status.Status.Active).ToList();
+            objHomeModel.ListBrand = objDatabaseDB.Brand.ToList();
 
             objHomeModel.ListDiscountProduct = objDatabaseDB.Product.Take(6).ToList();
 
@@ -36,6 +36,10 @@ namespace SHOP_BanHang.Controllers
 
 
             return View(objHomeModel);
+        }
+        public ActionResult About()
+        {
+            return View();
         }
     }
 }

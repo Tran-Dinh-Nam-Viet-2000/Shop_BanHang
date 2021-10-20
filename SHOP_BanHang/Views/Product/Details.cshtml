@@ -1,0 +1,158 @@
+﻿@model SHOP_BanHang.ConnectDB.Product
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- ========================= SECTION CONTENT ========================= -->
+<section style="margin: 0px 50px" class="section-content bg-white padding-y">
+    <div class="container">
+
+        <!-- ============================ ITEM DETAIL ======================== -->
+        <div class="row">
+            <aside class="col-md-6">
+                <div class="card">
+                    <article class="gallery-wrap">
+                        <div class="img-big-wrap">
+                            <div> <a href="#"><img src="@Model.Images"></a></div>
+                        </div> <!-- slider-product.// -->
+                        <!-- slider-nav.// -->
+                    </article> <!-- gallery-wrap .end// -->
+                </div> <!-- card.// -->
+            </aside>
+            <main class="col-md-6">
+                <article class="product-info-aside">
+
+                    <h2 class="title mt-3">@Model.Name </h2>
+
+                    <div class="rating-wrap my-3">
+                        <ul class="rating-stars">
+                            <li style="width:80%" class="stars-active">
+                                <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </li>
+                            <li>
+                                <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </li>
+                        </ul>
+                        <small class="label-rating text-muted">132 reviews</small>
+
+                    </div> <!-- rating-wrap.// -->
+
+                    <div class="mb-3">
+                        <var class="price h4">@Model.Price VNĐ</var>
+                    </div> <!-- price-detail-wrap .// -->
+                    <dl class="row">
+                        <dt class="col-sm-3">Thương hiệu:</dt>
+                        <dd class="col-sm-9"><a href="#">@Model.Brand.Name</a></dd>
+
+                        <dt class="col-sm-3">Loại sản phẩm:</dt>
+                        <dd class="col-sm-9">@Model.Category.Name</dd>
+
+                        <dt class="col-sm-3">Nơi sản xuất</dt>
+                        <dd class="col-sm-9">@Model.Origin:</dd>
+
+                        <dt class="col-sm-3">Ngày ra mắt:</dt>
+                        <dd class="col-sm-9">@Model.CreateDate</dd>
+
+                        <dt class="col-sm-3">Trạng thái:</dt>
+                        <dd style="color: mediumseagreen" class="col-sm-9">@Model.Status</dd>
+                    </dl>
+
+                    <div class="form-row  mt-4">
+                        <div class="form-group col-md flex-grow-0">
+                            <div class="input-group mb-3 input-spinner">
+                                <div class="input-group-prepend">
+                                    <button class="btn btn-light" type="button" id="button-plus"> + </button>
+                                </div>
+                                <input type="text" class="form-control" value="1">
+                                <div class="input-group-append">
+                                    <button class="btn btn-light" type="button" id="button-minus"> &minus; </button>
+                                </div>
+                            </div>
+                        </div> <!-- col.// -->
+                        <div class="form-group col-md">
+                            <a href="#" class="btn  btn-primary">
+                                <i class="fas fa-shopping-cart"></i> <span class="text">Add to cart</span>
+                            </a>
+                            <a href="#" class="btn btn-light">
+                                <i class="fas fa-envelope"></i> <span class="text">Contact supplier</span>
+                            </a>
+                        </div> <!-- col.// -->
+                    </div> <!-- row.// -->
+
+                </article> <!-- product-info-aside .// -->
+            </main> <!-- col.// -->
+        </div> <!-- row.// -->
+        <!-- ================ ITEM DETAIL END .// ================= -->
+
+
+    </div> <!-- container .//  -->
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->
+<!-- ========================= SECTION  ========================= -->
+@*<section class="section-name padding-y bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h5 class="title-description">Description</h5>
+                @Model.Description
+                <ul class="list-check">
+                    <li>@Model.Description</li>
+                    
+                </ul>
+            </div>
+        </div> 
+    </div> 
+</section>*@
+<!-- ========================= SECTION CONTENT END// ========================= -->
+<section style="margin: 0px 50px" class="padding-bottom-sm">
+
+    <header class="section-heading heading-line">
+        <h4 style="margin-left: 30px" class="title-section">Sản phẩm tương tự</h4>
+    </header>
+
+    <div class="row row-sm">
+        @foreach (var item in Model.Brand.Products)
+        {
+            <div class="col-xl-2 col-lg-3 col-md-4 col-6">
+                <div href="#" class="card card-sm card-product-grid">
+                    <a href="@Url.Action("Details", "Product",new { ID = item.ID})" class="img-wrap"> <img src="@item.Images"> </a>
+                    <figcaption class="info-wrap title text-center">
+                        <a href="@Url.Action("Details", "Product",new { ID = item.ID})" class="title">@item.Name</a>
+                        <div class="price mt-1">@item.Price VNĐ</div> <!-- price-wrap.// -->
+                    </figcaption>
+                </div>
+            </div>
+        }
+        <!-- col.// -->
+    </div> <!-- row.// -->
+</section>
+<!-- ========================= SECTION SUBSCRIBE  ========================= -->
+<section class="section-subscribe padding-y-lg">
+    <div class="container">
+
+        <p class="pb-2 text-center text-white">Cung cấp các xu hướng sản phẩm mới nhất và tin tức ngành đến hộp thư của bạn</p>
+
+        <div class="row justify-content-md-center">
+            <div class="col-lg-5 col-md-6">
+                <form class="form-row">
+                    <div class="col-md-8 col-7">
+                        <input class="form-control border-0" placeholder="Email của bạn" type="email">
+                    </div> <!-- col.// -->
+                    <div class="col-md-4 col-5">
+                        <button type="submit" class="btn btn-block btn-warning"> <i class="fa fa-envelope"></i> Đăng ký </button>
+                    </div> <!-- col.// -->
+                </form>
+
+            </div> <!-- col-md-6.// -->
+        </div>
+
+
+    </div>
+</section>
+<!-- ========================= SECTION SUBSCRIBE END// ========================= -->

@@ -5,12 +5,14 @@
 }
 
 @* Phần dẫn trang *@
-<div class="page-header">
+<div style="margin-left: 50px; margin-top: 15px" class="page-header">
     <div class="row">
         <div class="col-md-6 col-sm-12">
             <nav aria-label="breadcrumb" role="navigation">
                 <ol style=" margin: 10px 0px 0px 10px" class="breadcrumb">
-                    <li class="breadcrumb-item active" aria-current="page">Thương hiệu</li>
+                    <li class="breadcrumb-item active" aria-current="page"><a href="~/Home/Index">Trang chủ</a></li>
+                    <span style="margin: 0px 0px 0px 10px" class="last-bre"> <i class="fa fa-angle-right"></i> </span>
+                    <li style="margin-left: 10px" class="breadcrumb-item active" aria-current="page">Thương hiệu</li>
                     <span style="margin: 0px 0px 0px 10px" class="last-bre"> <i class="fa fa-angle-right"></i> </span>
                     <li style="color: blue;margin-left: 10px" class="breadcrumb-item active" aria-current="page">Apple</li>
                 </ol>
@@ -20,7 +22,7 @@
 </div>
 @* Phần dẫn trang - End *@
 
-<section class="padding-bottom-sm">
+<section style="margin: 0px 50px" class="padding-bottom-sm">
 
     <header style="text-align: center" class="section-heading heading-line">
         <h4 class="title-section text-uppercase">Apple</h4>
@@ -31,10 +33,10 @@
         @foreach (var item in Model.ListAppleProduct)
         {
             <div class="col-xl-2 col-lg-3 col-md-4 col-6">
-                <div href="#" class="card card-sm card-product-grid">
-                    <a href="#" class="img-wrap"> <img src="@item.Images"> </a>
+                <div href="#" class="card card-sm card-product-grid text-center">
+                    <a href="@Url.Action("Details", "Product",new { ID = item.ID})" class="img-wrap"> <img src="@item.Images"> </a>
                     <figcaption class="info-wrap title">
-                        <a href="#" class="title">@item.Name</a>
+                        <a href="@Url.Action("Details", "Product",new { ID = item.ID})" class="title">@item.Name</a>
                         <div class="price mt-1">@item.Price VNĐ</div> <!-- price-wrap.// -->
                     </figcaption>
                 </div>

@@ -11,19 +11,19 @@
     <section class="section-main padding-y">
         <main class="card">
             <div class="card-body">
-
                 <div class="row">
                     <aside class="col-lg col-md-3 flex-lg-grow-0">
-                        <h6>Menu</h6>
+                        <h6> Danh mục sản phẩm</h6>
                         <nav class="nav-home-aside">
                             <ul class="menu-category">
-                                <li><a class="dropdown-item" href="~/Category/SmartPhone">Điện thoại</a></li>
-                                <li><a class="dropdown-item" href="~/Category/Screen">Màn hình</a> </li>
-                                <li><a class="dropdown-item" href="~/Category/Laptop">Laptop</a></li>
-                                <li> <a class="dropdown-item" href="~/Category/All_Items">Tất cả sản phẩm</a></li>
+                                <li><a class="dropdown-item" href="~/Category/SmartPhone"><i style="margin-right: 18px;" class="fas fa-mobile-alt"></i>Điện thoại</a></li>
+                                <li><a class="dropdown-item" href="~/Category/Screen"><i style="margin-right: 10px;" class="fas fa-desktop"></i>Màn hình</a> </li>
+                                <li><a class="dropdown-item" href="~/Category/Laptop"><i style="margin-right: 10px;" class="fas fa-laptop"></i>Laptop</a></li>
+                                
                             </ul>
                         </nav>
                     </aside>
+
                     <div class="col-md-9 col-xl-7 col-lg-7">
 
                         <!-- ================== COMPONENT SLIDER  BOOTSTRAP  ==================  -->
@@ -55,7 +55,7 @@
                         </div>
                         <!-- ==================  COMPONENT SLIDER BOOTSTRAP end.// ==================  .// -->
 
-                    </div> <!-- col.// -->
+                    </div>
                     <div class="col-md d-none d-lg-block flex-grow-1">
                         <aside class="special-home-right">
                             <h6 class="bg-blue text-center text-white mb-0 p-2">Sản phẩm phổ biến</h6>
@@ -64,14 +64,14 @@
                                 <div class="card-banner border-bottom">
                                     <div class="py-3" style="width:80%">
                                         <h6 class="card-title">@item.Name</h6>
-                                        <a href="#" class="btn btn-secondary btn-sm"> Chi tiết sản phẩm </a>
+                                        <a href="@Url.Action("Details", "Product",new { ID = item.ID})" class="btn btn-secondary btn-sm"> Chi tiết sản phẩm </a>
                                     </div>
                                     <img src="@item.Images" height="80" class="img-bg">
                                 </div>
                             }
                         </aside>
-                    </div> <!-- col.// -->
-                </div> <!-- row.// -->
+                    </div>
+                </div>
 
             </div> <!-- card-body.// -->
         </main> <!-- card.// -->
@@ -98,10 +98,9 @@
                 {
                     <div class="col-md col-6">
                         <figure class="card-product-grid card-sm">
-                            <a href="@Url.Action("Details", "Product")" class="img-wrap">
+                            <a href="@Url.Action("Details", "Product",new { ID = item.ID})" class="img-wrap">
                                 <img src="@item.Images">
                             </a>
-
                             <div class="text-wrap p-3">
                                 @*<a href="" class="title">@item.Name</a>*@
                                 @Html.ActionLink(item.Name, "Details", "Product") <br />
@@ -123,7 +122,7 @@
     <!-- =============== SECTION 1 (LIST APPLE) =============== -->
     <section class="padding-bottom">
         <header class="section-heading heading-line">
-            <h4 class="title-section text-uppercase">Apple</h4>
+            <h4 style="margin-left: 30px" class="title-section text-uppercase">Apple</h4>
         </header>
 
         <div class="card card-home-category">
@@ -146,7 +145,7 @@
                         @foreach (var item in Model.ListAppleProduct)
                         {
                             <li class="col-6 col-lg-3 col-md-4">
-                                <a href="#" class="item">
+                                <a href="@Url.Action("Details", "Product",new { ID = item.ID})" class="item">
                                     <div class="card-body">
                                         <h6 class="title">@item.Name  </h6>
                                         <img class="img-sm float-right" src="@item.Images">
@@ -174,7 +173,7 @@
     <!-- =============== SECTION 2 (LIST SAMSUNG)=============== -->
     <section class="padding-bottom">
         <header class="section-heading heading-line">
-            <h4 class="title-section text-uppercase">Samsung</h4>
+            <h4 style="margin-left: 30px" class="title-section text-uppercase">Samsung</h4>
         </header>
 
         <div class="card card-home-category">
@@ -195,7 +194,7 @@
                         @foreach (var item in Model.ListSamsungProduct)
                         {
                             <li class="col-6 col-lg-3 col-md-4">
-                                <a href="#" class="item">
+                                <a href="@Url.Action("Details", "Product",new { ID = item.ID})" class="item">
                                     <div class="card-body">
                                         <h6 class="title">@item.Name</h6>
                                         <img class="img-sm float-right" src="@item.Images">
@@ -222,7 +221,7 @@
     <!-- =============== SECTION 3 (LIST XIAOMI)=============== -->
     <section class="padding-bottom">
         <header class="section-heading heading-line">
-            <h4 class="title-section text-uppercase">Xiaomi Redmi</h4>
+            <h4 style="margin-left: 30px" class="title-section text-uppercase">Xiaomi</h4>
         </header>
 
         <div class="card card-home-category">
@@ -242,7 +241,7 @@
                         @foreach (var item in Model.ListXiaomiProduct)
                         {
                             <li class="col-6 col-lg-3 col-md-4">
-                                <a href="#" class="item">
+                                <a href="@Url.Action("Details", "Product",new { ID = item.ID})" class="item">
                                     <div class="card-body">
                                         <h6 class="title">@item.Name</h6>
                                         <img class="img-sm float-right" src="@item.Images">
@@ -268,7 +267,7 @@
     <!-- =============== SECTION 4 (LIST LG)=============== -->
     <section class="padding-bottom">
         <header class="section-heading heading-line">
-            <h4 class="title-section text-uppercase">LCD LG</h4>
+            <h4 style="margin-left: 30px" class="title-section text-uppercase">LG</h4>
         </header>
 
         <div class="card card-home-category">
@@ -287,7 +286,7 @@
                         @foreach (var item in Model.ListLGProduct)
                         {
                             <li class="col-6 col-lg-3 col-md-4">
-                                <a href="#" class="item">
+                                <a href="@Url.Action("Details", "Product",new { ID = item.ID})" class="item">
                                     <div class="card-body">
                                         <h6 class="title">@item.Name</h6>
                                         <img class="img-sm float-right" src="@item.Images">
@@ -313,7 +312,7 @@
     <!-- =============== SECTION 5 (LIST DELL)=============== -->
     <section class="padding-bottom">
         <header class="section-heading heading-line">
-            <h4 class="title-section text-uppercase">Dell</h4>
+            <h4 style="margin-left: 30px" class="title-section text-uppercase">Dell</h4style="margin-left:>
         </header>
 
         <div class="card card-home-category">
@@ -332,7 +331,7 @@
                         @foreach (var item in Model.ListDellProduct)
                         {
                             <li class="col-6 col-lg-3 col-md-4">
-                                <a href="#" class="item">
+                                <a href="@Url.Action("Details", "Product",new { ID = item.ID})" class="item">
                                     <div class="card-body">
                                         <h6 class="title">@item.Name</h6>
                                         <img style="width: 100px" class="img-sm float-right" src="@item.Images">
@@ -436,9 +435,9 @@
             {
                 <div class="col-xl-2 col-lg-3 col-md-4 col-6">
                     <div href="#" class="card card-sm card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="@item.Images"> </a>
-                        <figcaption class="info-wrap title">
-                            <a href="#" class="title">@item.Name</a>
+                        <a href="@Url.Action("Details", "Product",new { ID = item.ID})" class="img-wrap"> <img src="@item.Images"> </a>
+                        <figcaption class="info-wrap title text-center">
+                            <a href="@Url.Action("Details", "Product",new { ID = item.ID})" class="title">@item.Name</a>
                             <div class="price mt-1">@item.Price VNĐ</div> <!-- price-wrap.// -->
                         </figcaption>
                     </div>
