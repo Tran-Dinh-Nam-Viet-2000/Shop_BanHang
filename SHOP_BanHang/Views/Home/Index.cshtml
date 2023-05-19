@@ -455,7 +455,7 @@
         </header>
 
         <div class="row">
-            @foreach (var item in Model.ListBrand)
+            @foreach (var item in Model.ListBrand.Where(n => n.Status == SHOP_BanHang.ConnectDB.Enum_Status.Status.Active).ToList())
             {
                 <div class="col-md-4 col-sm-6">
                     <article class="card card-post">
